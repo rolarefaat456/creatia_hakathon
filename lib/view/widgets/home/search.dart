@@ -96,5 +96,4 @@ class mySearch extends SearchDelegate
       ),
     );
   }
-  
 }

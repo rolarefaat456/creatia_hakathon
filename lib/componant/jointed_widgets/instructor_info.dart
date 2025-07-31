@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:hacathon_app/componant/models/person_model.dart';
 import 'package:hacathon_app/componant/utils/app_colors.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
 
 class InstructorInfo extends StatefulWidget {
-  InstructorInfo({super.key, required this.personModel});
+  InstructorInfo({super.key, required this.image, required this.name, required this.emailorphone, });
 
-  final PersonModel personModel;
+  final String image, name, emailorphone;
 
   @override
   State<InstructorInfo> createState() => _InstructorInfoState();
@@ -39,14 +38,14 @@ class _InstructorInfoState extends State<InstructorInfo> {
                           Padding(
                             padding: const EdgeInsets.only(top: 60, bottom: 15),
                             child: Text(
-                              widget.personModel.name,
+                              widget.name,
                               style: AppText.style16w400(context).copyWith(fontFamily: 'Cairo', color: AppColors.Deep_vilot),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(15),
                             child: Text(
-                              widget.personModel.emailorphone,
+                              widget.emailorphone,
                               style: AppText.style16w400(context).copyWith(fontFamily: 'Cairo', color: AppColors.Deep_vilot),
                             ),
                           ),
@@ -56,7 +55,7 @@ class _InstructorInfoState extends State<InstructorInfo> {
                   ),
                   CircleAvatar(
                     radius: 70,
-                    backgroundImage: AssetImage(widget.personModel.image),
+                    backgroundImage: AssetImage(widget.image),
                   ),
                   
                 ],

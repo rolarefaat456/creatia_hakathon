@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hacathon_app/componant/jointed_widgets/button_sign.dart';
-import 'package:hacathon_app/componant/models/Button_model.dart';
 import 'package:hacathon_app/componant/utils/app_colors.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
 
@@ -38,13 +37,12 @@ class DialogEditData {
     ),
     actions: [
         Center(
-          child: Button_Sign(buttonModel: ButtonModel(text: 'حفظ كلمة المرور', horizontal: 20, onPress: () {
+          child: Button_Sign(text: 'حفظ كلمة المرور', horizontal: 20, onPress: () {
             showdoneedit(context ,onPress: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
             });
           },)),
-        )
     ],
   );
     }

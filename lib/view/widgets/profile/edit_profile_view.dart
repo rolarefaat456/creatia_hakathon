@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hacathon_app/componant/jointed_widgets/button_sign.dart';
 import 'package:hacathon_app/componant/jointed_widgets/profile_appbar.dart';
-import 'package:hacathon_app/componant/models/Button_model.dart';
 import 'package:hacathon_app/componant/utils/app_colors.dart';
 import 'package:hacathon_app/componant/utils/app_images.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
 import 'package:hacathon_app/view/widgets/profile/dialog_edit_data.dart';
 import 'package:hacathon_app/view/widgets/profile/profile_form_feild.dart';
 
+// ignore: must_be_immutable
 class EditProfileView extends StatelessWidget {
   EditProfileView({super.key});
 
@@ -120,18 +120,17 @@ class EditProfileView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Button_Sign(
-                          buttonModel: ButtonModel(
+  
                             text: 'إلغاء',
                             horizontal: 20,
                             onPress: () {
                               Navigator.of(context).pop();
                             },
-                          ),
                         ),
                         Container(
                           margin: EdgeInsets.only(left: 15),
                           child: Button_Sign(
-                            buttonModel: ButtonModel(
+                    
                               text: 'حفظ التغيرات',
                               horizontal: 5,
                               onPress: () {
@@ -141,7 +140,7 @@ class EditProfileView extends StatelessWidget {
                               color: AppColors.White_Blue,
                             ),
                           ),
-                        ),
+                        
                       ],
                     ),
                   ),

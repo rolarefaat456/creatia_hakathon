@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:hacathon_app/componant/models/notification_model.dart';
 import 'package:hacathon_app/componant/utils/app_colors.dart';
-import 'package:hacathon_app/componant/utils/app_images.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
 
+// ignore: must_be_immutable
 class NotificationData extends StatelessWidget {
   NotificationData({
     super.key,

@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/componant/jointed_widgets/course_section.dart';
 import 'package:hacathon_app/componant/jointed_widgets/courses_data_levels.dart';
 import 'package:hacathon_app/componant/jointed_widgets/instructor_info.dart';
-import 'package:hacathon_app/componant/jointed_widgets/instuctor_info_model.dart';
-import 'package:hacathon_app/componant/models/button_courses_model.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
 import 'package:hacathon_app/componant/jointed_widgets/profile_appbar.dart';
-import 'package:hacathon_app/componant/models/person_model.dart';
 import 'package:hacathon_app/componant/utils/app_colors.dart';
 import 'package:hacathon_app/componant/utils/app_images.dart';
 
 class CoursesContentView extends StatelessWidget {
-  CoursesContentView({super.key, required this.instuctorInfoModel, required this.index});
+  CoursesContentView({super.key,  required this.index, required this.image, required this.name, required this.phone});
 
-  final InstuctorInfoModel instuctorInfoModel;
+  final String image, name, phone;
   final int index;
 
   @override
@@ -25,12 +21,12 @@ class CoursesContentView extends StatelessWidget {
           children: [
             Container(height: 70, child: ProfileAppbar()),
             InstructorInfo( // m3lomat el modarb
-                personModel: PersonModel(
-                  image: instuctorInfoModel.image,
-                  name:'${instuctorInfoModel.name} : المدرب ',
-                  emailorphone: instuctorInfoModel.phone
+                
+                  image: image,
+                  name:'${name} : المدرب ',
+                  emailorphone: phone
                 ),
-              ),
+              
               Container(
                 margin: EdgeInsets.symmetric(vertical: 20, horizontal: 60),
                 decoration: BoxDecoration(

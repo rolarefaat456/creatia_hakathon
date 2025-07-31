@@ -6,7 +6,6 @@ import 'package:hacathon_app/componant/utils/app_images.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
 import 'package:hacathon_app/prov/control.dart';
 import 'package:hacathon_app/view/widgets/Student_Progress/course_data_student.dart';
-import 'package:pie_chart/pie_chart.dart' hide PieChart;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

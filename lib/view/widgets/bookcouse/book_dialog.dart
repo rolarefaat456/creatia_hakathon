@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hacathon_app/componant/jointed_widgets/button_sign.dart';
-import 'package:hacathon_app/componant/models/Button_model.dart';
-import 'package:hacathon_app/componant/utils/app_colors.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
 import 'package:hacathon_app/view/widgets/profile/dialog_edit_data.dart';
-import 'package:hacathon_app/view/widgets/profile/profile_form_feild.dart';
 
 class BookDialog {
 
@@ -51,12 +48,12 @@ class BookDialog {
     ),
     actions: [
         Center(
-          child: Button_Sign(buttonModel: ButtonModel(text: 'إرسال الطلب الان', horizontal: 20, onPress: () {
+          child: Button_Sign(text: 'إرسال الطلب الان', horizontal: 20, onPress: () {
             dialogEditData.showdoneedit(context ,title: 'تم إرسال طلب الإشتراك' ,onPress: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
             });
-          },)),
+          },),
         )
     ],
   );

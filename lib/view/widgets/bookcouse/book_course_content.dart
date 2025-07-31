@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:hacathon_app/componant/jointed_widgets/courses_data_levels.dart';
 import 'package:hacathon_app/componant/jointed_widgets/instructor_info.dart';
-import 'package:hacathon_app/componant/jointed_widgets/instuctor_info_model.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
 import 'package:hacathon_app/componant/jointed_widgets/profile_appbar.dart';
-import 'package:hacathon_app/componant/models/person_model.dart';
 import 'package:hacathon_app/componant/utils/app_colors.dart';
 import 'package:hacathon_app/componant/utils/app_images.dart';
 import 'package:hacathon_app/view/widgets/bookcouse/book_dialog.dart';
 
+// ignore: must_be_immutable
 class BookCourseContent extends StatelessWidget {
-  BookCourseContent({super.key, required this.instuctorInfoModel});
+  BookCourseContent({super.key, required this.image, required this.name, required this.phone, });
 
   BookDialog bookDialog = BookDialog();
 
-  final InstuctorInfoModel instuctorInfoModel;
+  final String image, name, phone;
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +24,12 @@ class BookCourseContent extends StatelessWidget {
           children: [
             Container(height: 70, child: ProfileAppbar()),
             InstructorInfo( // m3lomat el modarb
-                personModel: PersonModel(
-                  image: instuctorInfoModel.image,
-                  name:'${instuctorInfoModel.name} : المدرب ',
-                  emailorphone: instuctorInfoModel.phone
+                
+                  image: image,
+                  name:'${name} : المدرب ',
+                  emailorphone: phone
                 ),
-              ),
+              
               Container(
                 margin: EdgeInsets.symmetric(vertical: 20, horizontal: 60),
                 decoration: BoxDecoration(

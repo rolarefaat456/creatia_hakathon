@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:hacathon_app/componant/models/sections_model.dart';
 import 'package:hacathon_app/componant/utils/app_colors.dart';
@@ -7,10 +6,9 @@ import 'package:hacathon_app/view/widgets/home/selected_section.dart';
 import 'package:hacathon_app/view/widgets/home/un_selected_section.dart';
 import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class CreativaSections extends StatelessWidget {
-  CreativaSections({
-    super.key,
-  });
+  CreativaSections({super.key});
 
   sectionsData sectionsdata = sectionsData();
 
@@ -27,20 +25,33 @@ class CreativaSections extends StatelessWidget {
               curve: Curves.easeIn,
               margin: EdgeInsets.only(right: 10),
               decoration: BoxDecoration(
-                color: value.selectedindex == index ? AppColors.Deep_vilot : Colors.white,
-    borderRadius: BorderRadius.circular(12),
+                color: value.selectedindex == index
+                    ? AppColors.Deep_vilot
+                    : Colors.white,
+                borderRadius: BorderRadius.circular(12),
               ),
               child: InkWell(
                 onTap: () {
                   value.seclected(index);
-                },child: value.selectedindex == index?
-                SelectedSection(sectionsModel: SectionsModel(name: sectionsdata.sectiondata[index]['name'], contenercolor: AppColors.Deep_vilot, textcolor: Colors.white))
-                :UnSelectedSection(sectionsModel: SectionsModel( name: sectionsdata.sectiondata[index]['name'])),
+                },
+                child: value.selectedindex == index
+                    ? SelectedSection(
+                        sectionsModel: SectionsModel(
+                          name: sectionsdata.sectiondata[index]['name'],
+                          contenercolor: AppColors.Deep_vilot,
+                          textcolor: Colors.white,
+                        ),
+                      )
+                    : UnSelectedSection(
+                        sectionsModel: SectionsModel(
+                          name: sectionsdata.sectiondata[index]['name'],
+                        ),
+                      ),
               ),
             );
           },
         );
-      }
+      },
     );
   }
 }

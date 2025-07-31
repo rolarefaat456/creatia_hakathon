@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:hacathon_app/componant/models/sections_model.dart';
-import 'package:hacathon_app/componant/utils/app_colors.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
 
 class UnSelectedSection extends StatelessWidget {

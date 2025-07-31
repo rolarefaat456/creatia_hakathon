@@ -3,8 +3,6 @@ import 'package:hacathon_app/componant/jointed_widgets/backgoundcontainer.dart';
 import 'package:hacathon_app/componant/jointed_widgets/basic_sign_text.dart';
 import 'package:hacathon_app/componant/jointed_widgets/button_sign.dart';
 import 'package:hacathon_app/componant/jointed_widgets/sign_form_feild.dart';
-import 'package:hacathon_app/componant/models/Button_model.dart';
-import 'package:hacathon_app/componant/models/sign_text_model.dart';
 import 'package:hacathon_app/componant/jointed_widgets/signinappbar.dart';
 
 class Loginpage extends StatefulWidget {
@@ -23,19 +21,20 @@ class _LoginpageState extends State<Loginpage> {
         child: SingleChildScrollView(
           child: ConstrainedBox(
             constraints: BoxConstraints(
-              minHeight: MediaQuery.sizeOf(context).height
+              minHeight: MediaQuery.sizeOf(context).height,
             ),
             child: IntrinsicHeight(
               child: Column(
                 children: [
-                  Container (
-                    height: 70,
-                    child: Signinappbar()
-                  ),
+                  Container(height: 70, child: Signinappbar()),
                   Container(
                     // height: 190,
-                    child: BasicSignText(signTextModel: SignTextModel(firsttext: 'إنشاء حساب جديد', secondtext: 'أدخل بياناتك لتبدء')),
+                    child: BasicSignText(
+                      firsttext: 'إنشاء حساب جديد',
+                      secondtext: 'أدخل بياناتك لتبدء',
+                    ),
                   ),
+
                   Container(
                     // height: 360,
                     child: Form(
@@ -64,17 +63,19 @@ class _LoginpageState extends State<Loginpage> {
                           ),
                         ],
                       ),
-                    )
+                    ),
                   ),
                   Spacer(),
                   Container(
                     margin: EdgeInsets.only(bottom: 40),
                     // height: 40,
-                    child: Button_Sign(buttonModel: ButtonModel(text: 'التالي', onPress: () {
-                      Navigator.of(context).pushNamed('ConfirmationLogin');
-                    },
-                    horizontal: 30
-                    )),
+                    child: Button_Sign(
+                      text: 'التالي',
+                      onPress: () {
+                        Navigator.of(context).pushNamed('ConfirmationLogin');
+                      },
+                      horizontal: 30,
+                    ),
                   ),
                 ],
               ),

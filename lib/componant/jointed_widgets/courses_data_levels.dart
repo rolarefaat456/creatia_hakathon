@@ -4,6 +4,7 @@ import 'package:hacathon_app/componant/models/course_level_model.dart';
 import 'package:hacathon_app/componant/utils/app_colors.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
 
+// ignore: must_be_immutable
 class CoursesDataLevels extends StatelessWidget {
   CoursesDataLevels({
     super.key,

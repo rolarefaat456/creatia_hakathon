@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/componant/models/sections_model.dart';
 import 'package:hacathon_app/componant/models/student_courses_model.dart';
 import 'package:hacathon_app/componant/utils/app_colors.dart';
 import 'package:hacathon_app/prov/control.dart';
 import 'package:hacathon_app/view/widgets/Student_Progress/course_data_selected.dart';
 import 'package:hacathon_app/view/widgets/Student_Progress/unselected_courses_student.dart';
-import 'package:hacathon_app/view/widgets/home/selected_section.dart';
-import 'package:hacathon_app/view/widgets/home/un_selected_section.dart';
 import 'package:provider/provider.dart';
 
+// ignore: must_be_immutable
 class StudentCourses extends StatelessWidget {
   StudentCourses({super.key});
 

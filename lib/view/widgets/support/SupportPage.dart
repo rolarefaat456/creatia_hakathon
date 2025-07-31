@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hacathon_app/componant/jointed_widgets/button_sign.dart';
 import 'package:hacathon_app/componant/jointed_widgets/sign_form_feild.dart';
-import 'package:hacathon_app/componant/models/Button_model.dart';
 import 'package:hacathon_app/componant/utils/app_colors.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
 import 'package:hacathon_app/view/widgets/profile/dialog_edit_data.dart';
 
+// ignore: must_be_immutable
 class SupportPage extends StatelessWidget {
   SupportPage({super.key});
 
@@ -55,13 +55,13 @@ class SupportPage extends StatelessWidget {
               Container(
                 margin: EdgeInsets.only(top: 70),
                 child: Button_Sign(
-                  buttonModel: ButtonModel(
+                  
                     text: 'إرسال الشكوي', horizontal: 20, onPress: () {
                       dialogEditData.showdoneedit(context, title: 'تم إرسال  الطلب', onPress: () {
                         Navigator.of(context).pop();
                       },);
                     },
-                  )
+                  
                 ),
               )
             ],

@@ -3,8 +3,6 @@ import 'package:hacathon_app/componant/jointed_widgets/backgoundcontainer.dart';
 import 'package:hacathon_app/componant/jointed_widgets/basic_sign_text.dart';
 import 'package:hacathon_app/componant/jointed_widgets/button_sign.dart';
 import 'package:hacathon_app/componant/jointed_widgets/sign_form_feild.dart';
-import 'package:hacathon_app/componant/models/Button_model.dart';
-import 'package:hacathon_app/componant/models/sign_text_model.dart';
 import 'package:hacathon_app/componant/utils/app_colors.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
 import 'package:hacathon_app/componant/jointed_widgets/signinappbar.dart';
@@ -25,20 +23,21 @@ class _SigninpageState extends State<Signinpage> {
         child: SingleChildScrollView(
           child: ConstrainedBox(
             constraints: BoxConstraints(
-              minHeight: MediaQuery.sizeOf(context).height
+              minHeight: MediaQuery.sizeOf(context).height,
             ),
             child: IntrinsicHeight(
               child: Column(
                 children: [
                   // Expanded
-                  Container (
-                    height: 80,
-                    child: Signinappbar()
-                  ),
+                  Container(height: 80, child: Signinappbar()),
                   Container(
                     // height: 190,
-                    child: BasicSignText(signTextModel: SignTextModel( firsttext: 'تسجيل الدخول', secondtext: 'أدخل بياناتك لتبدء')),
+                    child: BasicSignText(
+                      firsttext: 'تسجيل الدخول',
+                      secondtext: 'أدخل بياناتك لتبدء',
+                    ),
                   ),
+
                   Container(
                     // height: 350,
                     child: Form(
@@ -53,18 +52,24 @@ class _SigninpageState extends State<Signinpage> {
                             padding: const EdgeInsets.all(30),
                             child: InkWell(
                               onTap: () {
-                                Navigator.of(context).pushNamed('ResetPassword');
+                                Navigator.of(
+                                  context,
+                                ).pushNamed('ResetPassword');
                               },
                               child: Text(
-                                            'هل نسيت كلمة المرور',
-                                            style: AppText.style10w600(context).copyWith(decoration: TextDecoration.underline, decorationColor: AppColors.Blue ,color: AppColors.Blue),
-                                            textDirection: TextDirection.rtl,
-                                          ),
+                                'هل نسيت كلمة المرور',
+                                style: AppText.style10w600(context).copyWith(
+                                  decoration: TextDecoration.underline,
+                                  decorationColor: AppColors.Blue,
+                                  color: AppColors.Blue,
+                                ),
+                                textDirection: TextDirection.rtl,
+                              ),
                             ),
-                          )
+                          ),
                         ],
                       ),
-                    )
+                    ),
                   ),
                   Spacer(),
                   Container(
@@ -74,19 +79,24 @@ class _SigninpageState extends State<Signinpage> {
                       children: [
                         Container(
                           // height: 50,
-                          child: Button_Sign(buttonModel: ButtonModel(text: 'تسجيل الدخول', onPress: () {
-                            Navigator.of(context).pushNamed('ViewPage');
-                          },color: Colors.white,
-                          horizontal: 20,
-                          textcolor: AppColors.Blue
-                          )),
+                          child: Button_Sign(
+                            text: 'تسجيل الدخول',
+                            onPress: () {
+                              Navigator.of(context).pushNamed('ViewPage');
+                            },
+                            color: Colors.white,
+                            horizontal: 20,
+                            textcolor: AppColors.Blue,
+                          ),
                         ),
                         Container(
                           // height: 50,
-                          child: Button_Sign(buttonModel: ButtonModel(text: 'إنشاء حساب جديد', onPress: () {
-                            Navigator.of(context).pushNamed('Login');
-                          },horizontal: 10
-                          )
+                          child: Button_Sign(
+                            text: 'إنشاء حساب جديد',
+                            onPress: () {
+                              Navigator.of(context).pushNamed('Login');
+                            },
+                            horizontal: 10,
                           ),
                         ),
                       ],

@@ -7,6 +7,7 @@ class Control extends ChangeNotifier {
   bool shrink = false;
   bool hidden = false;
   bool showtext = false;
+  String baseUrl = 'https://lightcoral-giraffe-475787.hostingersite.com/Creativa/public';
 
   Control() { // constructor bystd3y elly b7faz fyha kym el index elly bkon fy fy el bottom navigator bar
     loadCurrentIndex();
@@ -53,7 +54,7 @@ class Control extends ChangeNotifier {
 
   void loadCurrentIndex() {
     final box = Hive.box('settings');
-    CurrentIndex = box.get('currentIndex', defaultValue: 4); // تحميل القيمة
+    CurrentIndex = box.get('currentIndex', defaultValue: 4);
     notifyListeners();
   }
 

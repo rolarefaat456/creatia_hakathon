@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:hacathon_app/componant/jointed_widgets/bottom_nav_bar.dart';
-import 'package:hacathon_app/componant/jointed_widgets/home_appbar.dart';
 import 'package:hacathon_app/componant/utils/app_colors.dart';
+import 'package:hacathon_app/componant/utils/app_images.dart';
 import 'package:hacathon_app/prov/control.dart';
 import 'package:hacathon_app/view/widgets/favourite_courses.dart/Favorites_Page.dart';
 import 'package:hacathon_app/view/widgets/notifications/Notifications_Page.dart';
@@ -21,7 +20,7 @@ class ViewPage extends StatefulWidget {
 class _ViewPageState extends State<ViewPage> {
 
   final List<Widget> pages = [
-  ProfilePage(),
+  ProfilePage(image: Assets.imagesElprofile, name: 'Mohammed Khaled Ahmed', emailorphone: 'Mohammed321Khaled@gmail.com',),
   SupportPage(),
   FavoritesPage(),
   NotificationsPage(),
@@ -33,6 +32,7 @@ class _ViewPageState extends State<ViewPage> {
     return Consumer<Control>(
       builder: (context, value, child) {
         return Scaffold(
+          
           backgroundColor: AppColors.white,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(
@@ -42,17 +42,89 @@ class _ViewPageState extends State<ViewPage> {
               MediaQuery.sizeOf(context).height/45
               :MediaQuery.sizeOf(context).height/50
             ),
-            child: HomeAppbar(),),
+            child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Row(
+        children: [
+          AspectRatio(
+            aspectRatio: 28/40,
+            child: Image.asset(Assets.imagesCreativaLogo2)
+          ),
+            Spacer(),
+            Container(
+              margin: EdgeInsets.only(right: 10),
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context).pushNamed('StudentPage');
+                },
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: CircleAvatar(
+                    child: Image.asset(Assets.imagesTrophy, fit: BoxFit.fill,),
+                    backgroundColor: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            AspectRatio(
+              aspectRatio: 1,
+              child: CircleAvatar(
+                backgroundImage: AssetImage(Assets.imagesElprofile),
+              ),
+            )
+        ],
+      ),
+    ),),
           body: IndexedStack(
             index: value.CurrentIndex,
             children: [
-              ProfilePage(),
+              ProfilePage(image: Assets.imagesElprofile, name: 'Mohammed Khaled Ahmed', emailorphone: 'Mohammed321Khaled@gmail.com',),
               SupportPage(),
               FavoritesPage(),
               NotificationsPage(),
               HomePage(),
             ],),
-            bottomNavigationBar: BottomNavBar(),
+            bottomNavigationBar: Consumer<Control>(
+      builder: (context, value, child) {
+        return BottomNavigationBar(
+          currentIndex: value.CurrentIndex,
+          onTap: (val) {
+            value.selected(val);
+          },
+          iconSize: 28,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.white,
+          selectedItemColor: AppColors.Blue,
+          unselectedItemColor: AppColors.Black,
+          selectedIconTheme: IconThemeData(color: AppColors.Blue),
+          unselectedIconTheme: IconThemeData(
+            color: AppColors.Black,
+          ),
+          items: [
+            BottomNavigationBarItem(
+              icon: Image.asset(Assets.imagesUser, width: 20, height: 28, color: value.CurrentIndex==0? AppColors.Blue : AppColors.Black,),
+              label: 'حسابي',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(Assets.imagesHeadset, width: 20, height: 28, color: value.CurrentIndex==1? AppColors.Blue : AppColors.Black,),
+              label: 'الدعم',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(Assets.imagesHeart, width: 20, height: 28, color: value.CurrentIndex==2? AppColors.Blue : AppColors.Black,),
+              label: 'المفضلة',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(Assets.imagesBell, width: 20, height: 28, color: value.CurrentIndex==3? AppColors.Blue : AppColors.Black,),
+              label: 'الإشعارات',
+            ),
+            BottomNavigationBarItem(
+              icon: Image.asset(Assets.imagesCreativaLogo2, width: 20, height: 28, color: value.CurrentIndex==4? null : AppColors.Black,),
+              label: 'الرئيسية',
+            ),
+          ],
+        );
+      },
+    ),
           );
       },
     );

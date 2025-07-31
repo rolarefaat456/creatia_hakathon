@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hacathon_app/componant/jointed_widgets/button_sign.dart';
-import 'package:hacathon_app/componant/models/Button_model.dart';
 import 'package:hacathon_app/componant/utils/app_colors.dart';
 import 'package:hacathon_app/componant/utils/app_images.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
@@ -126,13 +125,13 @@ class _OnboardState extends State<Onboard> {
                             Spacer(),
                             // botton
                             Button_Sign(
-                              buttonModel: ButtonModel(
+                              
                                 text: 'إبدء معنا الان',
                                 onPress: () {
                                   Navigator.of(context).pushNamed('SigninPage');
                                 }, horizontal: 70,
                               ),
-                            ),
+                            
                           ],
                         ),
                       );

@@ -2,12 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hacathon_app/componant/jointed_widgets/Confirmation_Login_text.dart';
 import 'package:hacathon_app/componant/jointed_widgets/backgoundcontainer.dart';
-import 'package:hacathon_app/componant/jointed_widgets/basic_sign_text.dart';
 import 'package:hacathon_app/componant/jointed_widgets/button_sign.dart';
 import 'package:hacathon_app/componant/jointed_widgets/confirmation_code.dart';
-import 'package:hacathon_app/componant/jointed_widgets/sign_form_feild.dart';
-import 'package:hacathon_app/componant/models/Button_model.dart';
-import 'package:hacathon_app/componant/models/sign_text_model.dart';
 import 'package:hacathon_app/componant/utils/app_colors.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
 import 'package:hacathon_app/componant/jointed_widgets/signinappbar.dart';
@@ -27,6 +23,7 @@ class _ConfirmationLoginState extends State<ConfirmationLogin> {
     super.initState();
     focusNodes = List.generate(4, (_) => FocusNode());
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,19 +32,20 @@ class _ConfirmationLoginState extends State<ConfirmationLogin> {
         child: SingleChildScrollView(
           child: ConstrainedBox(
             constraints: BoxConstraints(
-              minHeight: MediaQuery.sizeOf(context).height
+              minHeight: MediaQuery.sizeOf(context).height,
             ),
             child: IntrinsicHeight(
               child: Column(
                 children: [
-                  Container (
-                    height: 80,
-                    child: Signinappbar()
-                  ),
+                  Container(height: 80, child: Signinappbar()),
                   Container(
                     // height: 190,
-                    child: ConfirmationLoginText(signTextModel: SignTextModel(firsttext: 'إنشاء حساب جديد', secondtext: 'قم بإدخال رقم التأكيد الخاص بك')),
+                    child: ConfirmationLoginText(
+                      firsttext: 'إنشاء حساب جديد',
+                      secondtext: 'قم بإدخال رقم التأكيد الخاص بك',
+                    ),
                   ),
+
                   Center(
                     child: Container(
                       height: 150,
@@ -60,7 +58,11 @@ class _ConfirmationLoginState extends State<ConfirmationLogin> {
                     padding: const EdgeInsets.all(50),
                     child: Text(
                       'إعادة إرسال الكود !',
-                      style: AppText.style10w600(context).copyWith(decoration: TextDecoration.underline, decorationColor: AppColors.Volit_Blue, color: AppColors.Volit_Blue),
+                      style: AppText.style10w600(context).copyWith(
+                        decoration: TextDecoration.underline,
+                        decorationColor: AppColors.Volit_Blue,
+                        color: AppColors.Volit_Blue,
+                      ),
                       textDirection: TextDirection.rtl,
                       textAlign: TextAlign.right,
                     ),
@@ -69,11 +71,13 @@ class _ConfirmationLoginState extends State<ConfirmationLogin> {
                   Container(
                     margin: EdgeInsets.only(bottom: 40),
                     // height: 40,
-                    child: Button_Sign(buttonModel: ButtonModel(text: 'التالي', onPress: () {
-                      Navigator.of(context).pushNamed('SigninPage');
-                    },
-                    horizontal: 30
-                    )),
+                    child: Button_Sign(
+                      text: 'التالي',
+                      onPress: () {
+                        Navigator.of(context).pushNamed('SigninPage');
+                      },
+                      horizontal: 30,
+                    ),
                   ),
                 ],
               ),

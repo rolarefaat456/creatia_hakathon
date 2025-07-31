@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/componant/models/sign_text_model.dart';
 import 'package:hacathon_app/componant/utils/app_text.dart';
 
 class BasicSignText extends StatelessWidget {
-  const BasicSignText({super.key, required this.signTextModel});
+  const BasicSignText({super.key, required this.firsttext, required this.secondtext, });
 
-  final SignTextModel signTextModel;
+  final String firsttext, secondtext;
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +14,14 @@ class BasicSignText extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 30),
             child: Text(
-              signTextModel.firsttext,
+              firsttext,
               style: AppText.style24w800(context),
             ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 20),
             child: Text(
-              signTextModel.secondtext,
+              secondtext,
               style: AppText.style16w400(context),
             ),
           ),
