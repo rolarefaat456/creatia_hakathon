@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hacathon_app/components/jointed_widgets/Confirmation_Login_text.dart';
-import 'package:hacathon_app/components/jointed_widgets/api_dialog.dart';
-import 'package:hacathon_app/components/jointed_widgets/backgoundcontainer.dart';
-import 'package:hacathon_app/components/jointed_widgets/button_sign.dart';
-import 'package:hacathon_app/components/jointed_widgets/confirmation_code.dart';
+import 'package:hacathon_app/components/widgets/Confirmation_Login_text.dart';
+import 'package:hacathon_app/components/widgets/api_dialog.dart';
+import 'package:hacathon_app/components/widgets/backgoundcontainer.dart';
+import 'package:hacathon_app/components/widgets/button_sign.dart';
+import 'package:hacathon_app/components/widgets/confirmation_code.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
-import 'package:hacathon_app/components/jointed_widgets/signinappbar.dart';
+import 'package:hacathon_app/components/widgets/signinappbar.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:provider/provider.dart';
 
@@ -46,8 +47,8 @@ class _EnterConfirmationPasswordState extends State<EnterConfirmationPassword> {
                   Container(height: 70, child: Signinappbar()),
                   Container(
                     child: ConfirmationLoginText(
-                      firsttext: 'إعادة تعيين كلمة المرور',
-                      secondtext: 'قم بإدخال رقم التأكيد الخاص بك',
+                      firsttext: S.of(context).reset_password_title,
+                      secondtext: S.of(context).verify_subtitle,
                     ),
                   ),
 
@@ -77,7 +78,7 @@ class _EnterConfirmationPasswordState extends State<EnterConfirmationPassword> {
                             await value.ResendCode();
                           },
                           child: Text(
-                            'إعادة إرسال الكود !',
+                            S.of(context).resend_code,
                             style: AppText.style10w600(context).copyWith(
                               decoration: TextDecoration.underline,
                               decorationColor: AppColors.Volit_Blue,
@@ -101,7 +102,7 @@ class _EnterConfirmationPasswordState extends State<EnterConfirmationPassword> {
                               ),
                               height: 40,
                               child: Button_Sign(
-                                text: 'التالي',
+                                text: S.of(context).next_button,
 
                                 onPress: () async {
                                   // Navigator.of(context).pushNamed('CreateNewPassword');
@@ -115,24 +116,29 @@ class _EnterConfirmationPasswordState extends State<EnterConfirmationPassword> {
                                     );
                                     await value.Verify();
                                     Navigator.of(context).pop();
-                                    apiDialog.ShowApiDialog(
+                                    if (value.check) {
+                                      apiDialog.ShowApiDialog(
                                       context,
                                       title: value.vertfy['message'],
                                       onpressed: () {
-                                        if (value.check) {
                                           Navigator.of(
                                             context,
                                           ).pushNamed('CreateNewPassword');
-                                        } else {
-                                          Navigator.of(context).pop();
                                         }
-                                      },
-                                    );
+                                        );
+                                    }else{
+                                      apiDialog.ShowApiDialog(
+                                      context,
+                                      title: value.vertfy['message'],
+                                      onpressed: () {
+                                        Navigator.of(context).pop();
+                                        });
+                                    }
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          "You have an empty field",
+                                          S.of(context).empty_field_message,
                                         ),
                                       ),
                                     );

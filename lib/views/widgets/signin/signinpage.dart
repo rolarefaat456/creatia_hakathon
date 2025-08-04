@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/components/jointed_widgets/api_dialog.dart';
-import 'package:hacathon_app/components/jointed_widgets/backgoundcontainer.dart';
-import 'package:hacathon_app/components/jointed_widgets/basic_sign_text.dart';
-import 'package:hacathon_app/components/jointed_widgets/button_sign.dart';
-import 'package:hacathon_app/components/jointed_widgets/sign_form_feild.dart';
+import 'package:hacathon_app/components/widgets/api_dialog.dart';
+import 'package:hacathon_app/components/widgets/backgoundcontainer.dart';
+import 'package:hacathon_app/components/widgets/basic_sign_text.dart';
+import 'package:hacathon_app/components/widgets/button_sign.dart';
+import 'package:hacathon_app/components/widgets/sign_form_feild.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
-import 'package:hacathon_app/components/jointed_widgets/signinappbar.dart';
+import 'package:hacathon_app/components/widgets/signinappbar.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:provider/provider.dart';
 
@@ -37,8 +38,8 @@ class _SigninpageState extends State<Signinpage> {
                 Container(height: 80, child: Signinappbar()),
                 Container(
                   child: BasicSignText(
-                    firsttext: 'تسجيل الدخول',
-                    secondtext: 'أدخل بياناتك لتبدء',
+                    firsttext: S.of(context).signin_title,
+                    secondtext: S.of(context).signin_subtitle,
                   ),
                 ),
 
@@ -53,12 +54,12 @@ class _SigninpageState extends State<Signinpage> {
                             Padding(
                               padding: EdgeInsets.only(bottom: 10, top: 30),
                               child: SignFormFeild(
-                                hint: 'الايميل',
+                                hint: S.of(context).email_hint,
                                 controller: value.email,
                               ),
                             ),
                             SignFormFeild(
-                              hint: 'كلمة المرور',
+                              hint: S.of(context).password_hint,
                               controller: value.password,
                               onpress: () {
                                 value.isvisibliyoff();
@@ -78,7 +79,7 @@ class _SigninpageState extends State<Signinpage> {
                                       // await value.ForgetPassword();
                                     },
                                     child: Text(
-                                      'هل نسيت كلمة المرور',
+                                      S.of(context).forgot_password,
                                       style: AppText.style10w600(context)
                                           .copyWith(
                                             decoration:
@@ -86,7 +87,7 @@ class _SigninpageState extends State<Signinpage> {
                                             decorationColor: AppColors.Blue,
                                             color: AppColors.Blue,
                                           ),
-                                      textDirection: TextDirection.rtl,
+                                      // textDirection: TextDirection.rtl,
                                     ),
                                   );
                                 },
@@ -102,7 +103,7 @@ class _SigninpageState extends State<Signinpage> {
                               ),
                               child: Container(
                                 child: Button_Sign(
-                                  text: 'تسجيل الدخول',
+                                  text: S.of(context).signin_title,
                                   onPress: () async {
                                     if (formkey.currentState!.validate()) {
                                       showDialog(
@@ -127,11 +128,8 @@ class _SigninpageState extends State<Signinpage> {
                                           }
                                         },
                                       );
-                                    } else {
-                                      Text("You Have an empty feild");
                                     }
                                   },
-
                                   horizontal: 90,
                                 ),
                               ),
@@ -139,12 +137,12 @@ class _SigninpageState extends State<Signinpage> {
                             Container(
                               margin: EdgeInsets.only(top: 10),
                               child: Button_Sign(
-                                text: 'إنشاء حساب جديد',
+                                text: S.of(context).signup_button,
                                 onPress: () {
                                   Navigator.of(context).pushNamed('Login');
                                 },
                                 color: Colors.white,
-                                horizontal: 85,
+                                horizontal: value.isArabic()?85 : 55,
                                 textcolor: AppColors.Blue,
                               ),
                             ),

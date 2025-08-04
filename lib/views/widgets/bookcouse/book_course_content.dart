@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/components/jointed_widgets/courses_data_levels.dart';
-import 'package:hacathon_app/components/jointed_widgets/instructor_info.dart';
+import 'package:hacathon_app/components/widgets/courses_data_levels.dart';
+import 'package:hacathon_app/components/widgets/instructor_info.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
-import 'package:hacathon_app/components/jointed_widgets/profile_appbar.dart';
+import 'package:hacathon_app/components/widgets/profile_appbar.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/components/utils/app_images.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/views/widgets/bookcouse/book_dialog.dart';
 
 // ignore: must_be_immutable
@@ -31,7 +32,7 @@ class BookCourseContent extends StatelessWidget {
             InstructorInfo(
               // m3lomat el modarb
               image: image,
-              name: '${name} : المدرب ',
+              name: '${name} : ${S.of(context).instructor_label} ',
               emailorphone: phone,
             ),
 
@@ -94,7 +95,7 @@ class BookCourseContent extends StatelessWidget {
                             horizontal: 50,
                           ),
                           child: Text(
-                            'إحجز الان',
+                            S.of(context).book_now,
                             style: AppText.style12w400(context),
                           ),
                         ),

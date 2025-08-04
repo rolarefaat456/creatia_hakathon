@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/components/jointed_widgets/api_dialog.dart';
-import 'package:hacathon_app/components/jointed_widgets/backgoundcontainer.dart';
-import 'package:hacathon_app/components/jointed_widgets/basic_sign_text.dart';
-import 'package:hacathon_app/components/jointed_widgets/button_sign.dart';
-import 'package:hacathon_app/components/jointed_widgets/sign_form_feild.dart';
-import 'package:hacathon_app/components/jointed_widgets/signinappbar.dart';
+import 'package:hacathon_app/components/widgets/api_dialog.dart';
+import 'package:hacathon_app/components/widgets/backgoundcontainer.dart';
+import 'package:hacathon_app/components/widgets/basic_sign_text.dart';
+import 'package:hacathon_app/components/widgets/button_sign.dart';
+import 'package:hacathon_app/components/widgets/sign_form_feild.dart';
+import 'package:hacathon_app/components/widgets/signinappbar.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:provider/provider.dart';
 
@@ -36,8 +37,8 @@ class _LoginpageState extends State<Loginpage> {
                   Container(
                     // height: 190,
                     child: BasicSignText(
-                      firsttext: 'إنشاء حساب جديد',
-                      secondtext: 'أدخل بياناتك لتبدء',
+                      firsttext: S.of(context).signup_button,
+                      secondtext: S.of(context).signin_subtitle,
                     ),
                   ),
 
@@ -52,32 +53,32 @@ class _LoginpageState extends State<Loginpage> {
                               Padding(
                                 padding: EdgeInsets.only(bottom: 5, top: 20),
                                 child: SignFormFeild(
-                                  hint: 'الإسم',
+                                  hint: S.of(context).name_hint,
                                   controller: value.username,
                                 ),
                               ),
                               SignFormFeild(
-                                hint: 'الايميل',
+                                hint: S.of(context).email_hint,
                                 controller: value.email,
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top: 5),
                                 child: SignFormFeild(
-                                  hint: 'رقم الهاتف',
+                                  hint: S.of(context).phone_hint,
                                   controller: value.phone,
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top: 5),
                                 child: SignFormFeild(
-                                  hint: 'المدينة',
+                                  hint: S.of(context).city_hint,
                                   controller: value.city,
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top: 5),
                                 child: SignFormFeild(
-                                  hint: 'كلمة المرور',
+                                  hint: S.of(context).password_hint,
                                   controller: value.password,
                                   onpress: () {
                                     value.isvisibliyoff();
@@ -89,7 +90,7 @@ class _LoginpageState extends State<Loginpage> {
                               Padding(
                                 padding: EdgeInsets.only(top: 5),
                                 child: SignFormFeild(
-                                  hint: 'تأكيد كلمة المرور',
+                                  hint: S.of(context).confirm_password_hint,
                                   controller: value.password_confirmation,
                                   onpress: () {
                                     value.isvisibliyoff1();
@@ -109,7 +110,7 @@ class _LoginpageState extends State<Loginpage> {
                                 ),
                                 // height: 40,
                                 child: Button_Sign(
-                                  text: 'التالي',
+                                  text: S.of(context).next_button,
                                   onPress: () async {
                                     // Navigator.of(context).pushNamed('ConfirmationLogin');
                                     if (formkey.currentState!.validate()) {
@@ -137,8 +138,6 @@ class _LoginpageState extends State<Loginpage> {
                                           }
                                         },
                                       );
-                                    } else {
-                                      Text("You Have an empty feild");
                                     }
                                   },
                                   horizontal: 30,

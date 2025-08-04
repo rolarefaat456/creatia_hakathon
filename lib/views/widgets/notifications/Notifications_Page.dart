@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:hacathon_app/components/jointed_widgets/section_name.dart';
+import 'package:hacathon_app/components/widgets/section_name.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/views/widgets/notifications/notification_data.dart';
 
 class NotificationsPage extends StatelessWidget {
@@ -14,7 +15,7 @@ class NotificationsPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SectionName(name: 'الإشعارات',),
+            SectionName(name: S.of(context).notifications,),
               NotificationData()
           ],
         ),

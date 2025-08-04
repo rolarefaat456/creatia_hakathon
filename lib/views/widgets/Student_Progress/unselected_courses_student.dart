@@ -1,14 +1,15 @@
 
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/components/models/student_courses_model.dart';
+import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
 
 class UnselectedCoursesStudent extends StatelessWidget {
   const UnselectedCoursesStudent({
-    super.key, required this.studentCoursesModel,
+    super.key, required this.name, this.contenercolor = Colors.white, this.textcolor = AppColors.Deep_vilot,
   });
 
-  final StudentCoursesModel studentCoursesModel;
+  final String name;
+  final Color contenercolor, textcolor;
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +18,13 @@ class UnselectedCoursesStudent extends StatelessWidget {
       // height: 42,
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       decoration: BoxDecoration(
-        color: studentCoursesModel.contenercolor,
+        color: contenercolor,
         borderRadius: BorderRadius.circular(10)
       ),
       child: Center(
         child: Text(
-          studentCoursesModel.name,
-          style: AppText.style12w400(context).copyWith(fontFamily: 'Tajawal', color: studentCoursesModel.textcolor),
+          name,
+          style: AppText.style12w400(context).copyWith(fontFamily: 'Tajawal', color: textcolor),
           textAlign: TextAlign.center,
         ),
       ),

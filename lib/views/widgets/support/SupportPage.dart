@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:hacathon_app/components/jointed_widgets/api_dialog.dart';
-import 'package:hacathon_app/components/jointed_widgets/button_sign.dart';
-import 'package:hacathon_app/components/jointed_widgets/sign_form_feild.dart';
+import 'package:hacathon_app/components/widgets/api_dialog.dart';
+import 'package:hacathon_app/components/widgets/button_sign.dart';
+import 'package:hacathon_app/components/widgets/sign_form_feild.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:hacathon_app/views/widgets/profile/dialog_edit_data.dart';
 import 'package:provider/provider.dart';
@@ -29,24 +30,28 @@ class SupportPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: Text(
-                  'مرحبا بك',
+                  S.of(context).welcome,
                   textAlign: TextAlign.center,
-                  style: AppText.style18w800(context).copyWith(fontFamily: 'Almarai'),
+                  style: AppText.style18w800(
+                    context,
+                  ).copyWith(fontFamily: 'Almarai'),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(5),
                 child: Text(
-                  'كيف نقدر نساعدك ؟!',
+                  S.of(context).how_can_we_help,
                   textDirection: TextDirection.rtl,
                   textAlign: TextAlign.center,
-                  style: AppText.style18w800(context).copyWith(fontFamily: 'Almarai'),
+                  style: AppText.style18w800(
+                    context,
+                  ).copyWith(fontFamily: 'Almarai'),
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(top: 50, bottom: 15),
                 child: Text(
-                  'نرد عليك في خلال 24 ساعة !',
+                  S.of(context).reply_within_24_hours,
                   style: AppText.style14w400(context),
                   textDirection: TextDirection.rtl,
                   textAlign: TextAlign.center,
@@ -60,45 +65,48 @@ class SupportPage extends StatelessWidget {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(10),
-                          child: SignFormFeild(hint: 'أدخل رقم هاتفك', controller: value.phone,),
+                          child: SignFormFeild(
+                            hint: S.of(context).enter_phone,
+                            controller: value.phone,
+                          ),
                         ),
-                        SignFormFeild(hint: 'أدخل الشكوي', maxlines: 5, controller: value.message,),
-                    Container(
-                      margin: EdgeInsets.only(top: 70),
-                      child: Button_Sign(
-                          text:  'إرسال الشكوي',
-                          horizontal: 20, onPress: () async {
-                            if (formkey.currentState!.validate()) {
-                                          showDialog(
-                                            context: context,
-                                            barrierDismissible: false,
-                                            builder: (_) => Center(
-                                              child:
-                                                  CircularProgressIndicator(),
-                                            ),
-                                          );
-                                          await value.AddComplain();
-                                          Navigator.of(context).pop();
-                                          apiDialog.ShowApiDialog(
-                                            context,
-                                            title: value.addComplain['message'],
-                                            onpressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                          );}
-                            // dialogEditData.showdoneedit(context, title: 'تم إرسال  الطلب', onPress: () {
-                            //   Navigator.of(context).pop();
-                            // },);
-                          },
-
-                      ),
-                    )
+                        SignFormFeild(
+                          hint: S.of(context).enter_complaint,
+                          maxlines: 5,
+                          controller: value.message,
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 70),
+                          child: Button_Sign(
+                            text: S.of(context).send_complaint,
+                            horizontal: 20,
+                            onPress: () async {
+                              if (formkey.currentState!.validate()) {
+                                showDialog(
+                                  context: context,
+                                  barrierDismissible: false,
+                                  builder: (_) => Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                );
+                                await value.AddComplain();
+                                Navigator.of(context).pop();
+                                apiDialog.ShowApiDialog(
+                                  context,
+                                  title: value.addComplain['message'],
+                                  onpressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                );
+                              }
+                            },
+                          ),
+                        ),
                       ],
                     ),
                   );
-                }
+                },
               ),
-              
             ],
           ),
         ),

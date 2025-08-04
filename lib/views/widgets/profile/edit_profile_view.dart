@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/components/jointed_widgets/api_dialog.dart';
-import 'package:hacathon_app/components/jointed_widgets/button_sign.dart';
-import 'package:hacathon_app/components/jointed_widgets/profile_appbar.dart';
+import 'package:hacathon_app/components/widgets/api_dialog.dart';
+import 'package:hacathon_app/components/widgets/button_sign.dart';
+import 'package:hacathon_app/components/widgets/profile_appbar.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/components/utils/app_images.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:hacathon_app/views/widgets/profile/dialog_edit_data.dart';
 import 'package:hacathon_app/views/widgets/profile/profile_form_feild.dart';
@@ -99,7 +100,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 30),
                         child: Text(
-                          'البيانات الأساسية',
+                          S.of(context).basic_info,
                           style: AppText.style18w400(context),
                         ),
                       ),
@@ -120,7 +121,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                             Container(
                               margin: EdgeInsets.only(bottom: 10),
                               child: ProfileFormFeild(
-                                hint: 'رقم الهاتف :',
+                                hint: "${S.of(context).phone_hint} :",
                                 readonly: false,
                                 enable: true,
                                 colortext: AppColors.Grey,
@@ -130,7 +131,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                             Container(
                               margin: EdgeInsets.only(bottom: 10),
                               child: ProfileFormFeild(
-                                hint: 'الايميل :',
+                                hint: "${S.of(context).email_hint} :",
                                 readonly: false,
                                 enable: true,
                                 colortext: AppColors.Grey,
@@ -178,7 +179,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                     ).copyWith(color: AppColors.Black),
                                   ),
                                   suffix: Text(
-                                    'كلمة المرور :',
+                                    "${S.of(context).password_hint} :",
                                     style: AppText.style12w500(
                                       context,
                                     ).copyWith(color: AppColors.Black),
@@ -191,7 +192,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                             Container(
                               margin: EdgeInsets.only(bottom: 10),
                               child: ProfileFormFeild(
-                                hint: 'المدينة :',
+                                hint: "${S.of(context).city_hint} :",
                                 readonly: false,
                                 enable: true,
                                 colortext: AppColors.Grey,
@@ -208,7 +209,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Button_Sign(
-                                    text: 'إلغاء',
+                                    text: S.of(context).cancel,
                                     horizontal: 20,
                                     onPress: () {
                                       Navigator.of(context).pop();
@@ -217,7 +218,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                   Container(
                                     margin: EdgeInsets.only(left: 15,),
                                     child: Button_Sign(
-                                      text: 'حفظ التغيرات',
+                                      text: S.of(context).save_changes,
                                       horizontal: 5,
                                       onPress: () async {
                                         if (formkey.currentState!.validate()) {
@@ -232,7 +233,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                           await value.UpdateProfile();
                                           if (!mounted) return; // lsa fy el mkan bta3y
                                   Navigator.of(context).pop();
-                                  apiDialog.ShowApiDialog(context, title: 'تم الحفظ بنجاح', onpressed: () {
+                                  apiDialog.ShowApiDialog(context, title: S.of(context).edit_success, onpressed: () {
                                     Navigator.of(context).pop();
                                     Navigator.of(context).pop();
                                   },);
@@ -242,7 +243,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                           ).showSnackBar(
                                             SnackBar(
                                               content: Text(
-                                                "يرجى إدخال جميع البيانات بشكل صحيح",
+                                                S.of(context).fill_all_data,
                                               ),
                                               backgroundColor: Colors.red,
                                             ),
@@ -258,8 +259,6 @@ class _EditProfileViewState extends State<EditProfileView> {
                           ],
                         ),
                       ),
-
-                      // Spacer(),
                     ],
                   );
                 },

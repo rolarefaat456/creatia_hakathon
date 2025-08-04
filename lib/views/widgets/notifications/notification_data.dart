@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hacathon_app/components/models/notification_model.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
+import 'package:hacathon_app/components/utils/app_images.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +20,7 @@ class NotificationData extends StatelessWidget {
         return (value.allNotification == null ||
                 value.allNotification['data'] == null ||
                 value.allNotification['data'].isEmpty)
-            ? Center(child: Text("No Notification available"))
+            ? Center(child: Text(S.of(context).no_notification))
             : value.isLoading
             ? CircularProgressIndicator()
             : ListView.builder(
@@ -76,8 +78,9 @@ class NotificationData extends StatelessWidget {
                             ),
                             trailing: CircleAvatar(
                               backgroundColor: Colors.white,
-                              backgroundImage: AssetImage(
-                                notificationDataList.data[index].image,
+                              backgroundImage: NetworkImage(
+                                getImageUrl(value.allNotification['data'][index]['image'])
+                                // notificationDataList.data[index].image,
                               ),
                             ),
                           ),
@@ -90,6 +93,7 @@ class NotificationData extends StatelessWidget {
                               horizontal: 50,
                             ),
                             child: Text(
+                              // value.allNotification['data'][index]['text'],
                               notificationDataList.data[index].text,
                               style: AppText.style10w400(context).copyWith(
                                 color: Color.fromARGB(255, 157, 157, 157),

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/components/jointed_widgets/api_dialog.dart';
-import 'package:hacathon_app/components/jointed_widgets/button_courses_section.dart';
+import 'package:hacathon_app/components/widgets/api_dialog.dart';
+import 'package:hacathon_app/components/widgets/button_courses_section.dart';
 import 'package:hacathon_app/components/utils/app_images.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:hacathon_app/views/widgets/Student_Progress/courses_content_view.dart';
 import 'package:hacathon_app/components/models/button_courses_model.dart';
-import 'package:hacathon_app/components/models/course_model.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
 import 'package:hacathon_app/views/widgets/bookcouse/book_course_content.dart';
@@ -25,7 +24,6 @@ class CourseSection extends StatelessWidget {
     required this.source,
   });
 
-  CourseData courseData = CourseData();
 
   final String name, fontfamily, source;
   final int? specialIndex;

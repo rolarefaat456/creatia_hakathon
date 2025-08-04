@@ -22,12 +22,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await Hive.openBox('settings');
+  final control = Control();
+  await control.getSavedLanguage();
   await FlutterLocalization.instance.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
     // bysht8l by el tol bs
     DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
   ]);
   // Directory dir = await getApplicationDocumentsDirectory();
   await Hive.initFlutter(
@@ -36,8 +37,9 @@ void main() async {
   await Hive.openBox('settings');
   await Hive.openBox('token');
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => Control(),
+    ChangeNotifierProvider.value(
+      value: control,
+      // create: (context) => Control(),
       child: DevicePreview(
         enabled: true,
         builder: (context) {
@@ -53,31 +55,35 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      locale: Locale('ar'), // da elly by5tarly el lo8a
-      localizationsDelegates: [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: S.delegate.supportedLocales,
-      debugShowCheckedModeBanner: false,
-      // home: StudentPage(),
-      initialRoute: 'Onboard',
-      routes: {
-        'Onboard': (context) => Onboard(),
-        'SigninPage': (context) => Signinpage(),
-        'ViewPage': (context) => ViewPage(),
-        'Login': (context) => Loginpage(),
-        'ConfirmationLogin': (context) => ConfirmationLogin(),
-        'ResetPassword': (context) => ResetPassword(),
-        'EnterConfirmationPassword': (context) => EnterConfirmationPassword(),
-        'CreateNewPassword': (context) => CreateNewPassword(),
-        'HomePage': (context) => HomePage(),
-        'EditProfileView': (context) => EditProfileView(),
-        'StudentPage': (context) => StudentPage(),
-      },
+    return Consumer<Control>(
+      builder: (context, value, child) {
+        return MaterialApp(
+          locale: value.locale,
+          localizationsDelegates: [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+          debugShowCheckedModeBanner: false,
+          // home: StudentPage(),
+          initialRoute: 'Onboard',
+          routes: {
+            'Onboard': (context) => Onboard(),
+            'SigninPage': (context) => Signinpage(),
+            'ViewPage': (context) => ViewPage(),
+            'Login': (context) => Loginpage(),
+            'ConfirmationLogin': (context) => ConfirmationLogin(),
+            'ResetPassword': (context) => ResetPassword(),
+            'EnterConfirmationPassword': (context) => EnterConfirmationPassword(),
+            'CreateNewPassword': (context) => CreateNewPassword(),
+            'HomePage': (context) => HomePage(),
+            'EditProfileView': (context) => EditProfileView(),
+            'StudentPage': (context) => StudentPage(),
+          },
+        );
+      }
     );
   }
 }

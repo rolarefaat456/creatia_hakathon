@@ -3,10 +3,14 @@ import 'package:flutter/widgets.dart';
 import 'package:hacathon_app/providers/api.dart';
 import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
+
+
 
 class Control extends ChangeNotifier {
   // animation for blue Page and image
   bool shrink = false;
+  bool appearance = true;
   bool hidden = false;
   bool showtext = false;
   // 3lshan el loading
@@ -16,6 +20,8 @@ class Control extends ChangeNotifier {
   Api api = Api();
 
   late Box tokenbox = Hive.box("token");
+  late Box languagebox = Hive.box("settings");
+  late Locale locale = const Locale('ar');
 
   // el url bta3 el back
   String baseUrl =
@@ -74,6 +80,11 @@ class Control extends ChangeNotifier {
         });
       });
     });
+  }
+
+  setappearance( bool val ){
+    appearance = val;
+    notifyListeners();
   }
 
   // selected section home Page
@@ -872,4 +883,23 @@ class Control extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  bool isArabic(){
+    return Intl.getCurrentLocale() == 'ar';
+  }
+
+  // change language
+  ChangeLanguage(){
+  final newLang = locale.languageCode == 'ar' ? 'en' : 'ar';
+  languagebox.put('language', newLang);
+  locale = Locale(newLang);
+  notifyListeners();
+  }
+
+  Future<void> getSavedLanguage() async {
+  final savedLang = languagebox.get('language', defaultValue: 'ar');
+  locale = Locale(savedLang);
+  notifyListeners();
+}
+
 }

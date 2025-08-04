@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/components/models/course_level_model.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
 import 'package:hacathon_app/providers/control.dart';
@@ -12,7 +11,6 @@ class CoursesDataLevels extends StatelessWidget {
     super.key, required this.source,
   });
 
-  CourseLevel courseLevel = CourseLevel();
   final String source;
 
   @override

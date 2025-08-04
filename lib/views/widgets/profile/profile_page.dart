@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/components/jointed_widgets/api_dialog.dart';
-import 'package:hacathon_app/components/jointed_widgets/button_sign.dart';
+import 'package:hacathon_app/components/widgets/api_dialog.dart';
+import 'package:hacathon_app/components/widgets/button_sign.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/components/utils/app_images.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:hacathon_app/views/widgets/profile/profile_form_feild.dart';
 import 'package:provider/provider.dart';
@@ -98,7 +99,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     CircleAvatar(
                       radius: 60,
-                      backgroundImage: NetworkImage( getImageUrl(widget.image) ),
+                      backgroundImage: NetworkImage(getImageUrl(widget.image)),
                     ),
                   ],
                 ),
@@ -106,7 +107,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 30),
                 child: Text(
-                  'البيانات الأساسية',
+                  S.of(context).basic_info,
                   style: AppText.style18w400(context),
                 ),
               ),
@@ -128,7 +129,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         Container(
                           margin: EdgeInsets.only(bottom: 10),
                           child: ProfileFormFeild(
-                            hint: 'رقم الهاتف :',
+                            hint: '${S.of(context).phone_hint} :',
                             readonly: false,
                             enable: false,
                             colortext: AppColors.Black,
@@ -162,7 +163,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ).copyWith(color: AppColors.Black),
                               ),
                               hint: Text(
-                                'كلمة المرور :',
+                                '${S.of(context).password_hint} :',
                                 style: AppText.style12w500(
                                   context,
                                 ).copyWith(color: AppColors.Black),
@@ -175,7 +176,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         Container(
                           margin: EdgeInsets.only(bottom: 10),
                           child: ProfileFormFeild(
-                            hint: 'المدينة :',
+                            hint: '${S.of(context).city_hint} :',
                             readonly: false,
                             enable: false,
                             colortext: AppColors.Black,
@@ -192,7 +193,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   return Container(
                     margin: EdgeInsets.only(top: 50),
                     child: Button_Sign(
-                      text: 'تسجيل الخروج',
+                      text: S.of(context).logout,
                       horizontal: 20,
                       onPress: () async {
                         showDialog(

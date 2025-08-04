@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/components/jointed_widgets/api_dialog.dart';
-import 'package:hacathon_app/components/jointed_widgets/backgoundcontainer.dart';
-import 'package:hacathon_app/components/jointed_widgets/basic_sign_text.dart';
-import 'package:hacathon_app/components/jointed_widgets/button_sign.dart';
-import 'package:hacathon_app/components/jointed_widgets/sign_form_feild.dart';
-import 'package:hacathon_app/components/jointed_widgets/signinappbar.dart';
+import 'package:hacathon_app/components/widgets/api_dialog.dart';
+import 'package:hacathon_app/components/widgets/backgoundcontainer.dart';
+import 'package:hacathon_app/components/widgets/basic_sign_text.dart';
+import 'package:hacathon_app/components/widgets/button_sign.dart';
+import 'package:hacathon_app/components/widgets/sign_form_feild.dart';
+import 'package:hacathon_app/components/widgets/signinappbar.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:provider/provider.dart';
 
@@ -34,8 +35,8 @@ class _ResetPasswordState extends State<ResetPassword> {
                 Container(
                   // height: 190,
                   child: BasicSignText(
-                    firsttext: 'إعادة تعيين كلمة المرور',
-                    secondtext: 'أدخل بياناتك لتبدء',
+                    firsttext: S.of(context).reset_password_title,
+                    secondtext: S.of(context).signin_subtitle,
                   ),
                 ),
 
@@ -50,7 +51,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                             Padding(
                               padding: EdgeInsets.only(bottom: 20, top: 30),
                               child: SignFormFeild(
-                                hint: 'الايميل',
+                                hint: S.of(context).email_hint,
                                 controller: value.email,
                               ),
                             ),
@@ -65,7 +66,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                               ),
                               // height: 50,
                               child: Button_Sign(
-                                text: 'التالي',
+                                text: S.of(context).reset_password_title,
 
                                 onPress: () async {
                                   if (formkey.currentState!.validate()) {
@@ -92,7 +93,9 @@ class _ResetPasswordState extends State<ResetPassword> {
                                       },
                                     );
                                   } else {
-                                    Text("You Have an empty feild");
+                                    Text(
+                                      S.of(context).empty_field_message
+                                    );
                                   }
                                 },
                                 horizontal: 20,

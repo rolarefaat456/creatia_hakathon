@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/components/jointed_widgets/course_section.dart';
-import 'package:hacathon_app/components/jointed_widgets/profile_appbar.dart';
+import 'package:hacathon_app/components/widgets/course_section.dart';
+import 'package:hacathon_app/components/widgets/profile_appbar.dart';
 import 'package:hacathon_app/components/models/button_courses_model.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/components/utils/app_images.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/views/widgets/Student_Progress/course_data_student.dart';
 import 'package:hacathon_app/views/widgets/Student_Progress/last_courses.dart';
 import 'package:hacathon_app/views/widgets/Student_Progress/student_courses.dart';
@@ -57,7 +58,7 @@ class _StudentPageState extends State<StudentPage> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'اخر الدورات :',
+                        S.of(context).latest_courses,
                         style: AppText.style11w500(context).copyWith(color: AppColors.Baby_Black),
                         textDirection: TextDirection.rtl
                       ),
@@ -65,7 +66,7 @@ class _StudentPageState extends State<StudentPage> {
                     Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'برمجة تطبيقات Flutter',
+                    S.of(context).flutter_app_development,
                     style: AppText.style14w400(context),
                     textDirection: TextDirection.rtl
                   ),

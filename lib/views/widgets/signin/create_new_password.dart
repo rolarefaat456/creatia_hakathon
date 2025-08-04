@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/components/jointed_widgets/api_dialog.dart';
-import 'package:hacathon_app/components/jointed_widgets/backgoundcontainer.dart';
-import 'package:hacathon_app/components/jointed_widgets/basic_sign_text.dart';
-import 'package:hacathon_app/components/jointed_widgets/button_sign.dart';
-import 'package:hacathon_app/components/jointed_widgets/sign_form_feild.dart';
-import 'package:hacathon_app/components/jointed_widgets/signinappbar.dart';
+import 'package:hacathon_app/components/widgets/api_dialog.dart';
+import 'package:hacathon_app/components/widgets/backgoundcontainer.dart';
+import 'package:hacathon_app/components/widgets/basic_sign_text.dart';
+import 'package:hacathon_app/components/widgets/button_sign.dart';
+import 'package:hacathon_app/components/widgets/sign_form_feild.dart';
+import 'package:hacathon_app/components/widgets/signinappbar.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:provider/provider.dart';
 
@@ -34,7 +35,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                   Container(height: 80, child: Signinappbar()),
                   Container(
                     child: BasicSignText(
-                      firsttext: 'إنشاء كلمة مرور جديدة',
+                      firsttext: S.of(context).new_password_title,
                       secondtext: '',
                     ),
                   ),
@@ -49,7 +50,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                               Padding(
                                 padding: EdgeInsets.only(bottom: 10, top: 30),
                                 child: SignFormFeild(
-                                  hint: 'كلمة المرور الجديدة',
+                                  hint: S.of(context).new_password_hint,
                                   controller: value.password,
                                   onpress: () {
                                     value.isvisibliyoff();
@@ -59,7 +60,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                                 ),
                               ),
                               SignFormFeild(
-                                hint: 'كلمة المرور الجديدة',
+                                hint: S.of(context).new_password_hint,
                                 controller: value.password_confirmation,
                                 onpress: () {
                                   value.isvisibliyoff1();
@@ -76,7 +77,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                                       : MediaQuery.sizeOf(context).height / 4,
                                 ),
                                 child: Button_Sign(
-                                  text: 'تسجيل الدخول',
+                                  text: S.of(context).signin_title,
                                   onPress: () async {
                                     if (formkey.currentState!.validate()) {
                                       showDialog(
@@ -102,7 +103,7 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
                                         },
                                       );
                                     } else {
-                                      Text("You Have an empty feild");
+                                      Text(S.of(context).empty_field_message);
                                     }
                                   },
                                   horizontal: 10,

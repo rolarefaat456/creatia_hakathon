@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/components/jointed_widgets/course_section.dart';
+import 'package:hacathon_app/components/widgets/course_section.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/views/widgets/home/astronaut_section.dart';
 import 'package:hacathon_app/views/widgets/home/creativa_sections.dart';
 import 'package:hacathon_app/views/widgets/home/search.dart';
@@ -37,7 +38,7 @@ class _HomePageState extends State<HomePage> {
             ),
             // section courses
             Expanded(
-              child: CourseSection(name: 'الحجز : 1 أغسطس 2025', fontfamily: 'VEXA', source: 'Home',)
+              child: CourseSection(name: S.of(context).booking_date, fontfamily: 'VEXA', source: 'Home',)
             ),
           ],
         )

@@ -36,38 +36,6 @@ class AstronautSecction extends StatelessWidget {
           fit: BoxFit.fill
         ),
       ),
-      child: Stack(
-        children: [
-          // Container(
-          //   margin: EdgeInsets.all(20),
-          //   width: 60,
-          //   height: 60,
-          //   decoration: BoxDecoration(
-          //     borderRadius: BorderRadius.circular(48),
-          //     image: DecorationImage(
-          //       image: AssetImage(Assets.imagesLogobyelard),
-          //       fit: BoxFit.fill
-          //     )
-          //   ),
-          // ),
-          // Positioned(
-          //   bottom: 15,
-          //   right: 15,
-          //   child: CircleAvatar(
-          //     maxRadius: 30,
-          //     backgroundColor: AppColors.Orange,
-          //     child: Center(
-          //       child: Text(
-          //         'الحجز\n 13 أبريل',
-          //         style: AppText.style8w700(context).copyWith(fontFamily: 'Lemonada', fontSize: 10),
-          //         textAlign: TextAlign.center,
-          //         textDirection: TextDirection.rtl,
-          //       ),
-          //     ),
-          //   )
-          // )
-        ],
-      ),
     )
           );
         },

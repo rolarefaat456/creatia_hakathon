@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hacathon_app/components/jointed_widgets/button_sign.dart';
+import 'package:hacathon_app/components/widgets/button_sign.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,7 @@ class DialogEditData {
           backgroundColor: Colors.white,
           title: Center(
             child: Text(
-              'تعديل كلمة المرور',
+              S.of(context).edit_password,
               style: AppText.style18w400(context),
             ),
           ),
@@ -25,21 +26,21 @@ class DialogEditData {
               Container(
                 margin: EdgeInsets.only(bottom: 10),
                 child: EditingFeild(
-                  hint: 'كلمة المرور الحالية',
+                  hint: S.of(context).current_password,
                   nameController: prov.current_password,
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(bottom: 10),
                 child: EditingFeild(
-                  hint: 'كلمة المرور الجديدة',
+                  hint: S.of(context).new_password_hint,
                   nameController: prov.password,
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(bottom: 10),
                 child: EditingFeild(
-                  hint: 'تأكيد كلمة المرور الجديدة',
+                  hint: S.of(context).confirm_new_password,
                   nameController: prov.password_confirmation,
                 ),
               ),
@@ -48,20 +49,19 @@ class DialogEditData {
           actions: [
             Center(
               child: Button_Sign(
-                text: 'حفظ كلمة المرور',
+                text: S.of(context).save_password,
                 horizontal: 20,
                 onPress: () async {
                   showDialog(
-                                      context: context,
-                                      barrierDismissible: false,
-                                      builder: (_) => Center(
-                                        child: CircularProgressIndicator(),
-                                      ),
-                                    );
-                      await prov.UpdatePassword();
-                      Navigator.of(context).pop();
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (_) => Center(child: CircularProgressIndicator()),
+                  );
+                  await prov.UpdatePassword();
+                  Navigator.of(context).pop();
                   showdoneedit(
                     context,
+                    title: S.of(context).edit_success,
                     onPress: () {
                       Navigator.of(context).pop();
                       Navigator.of(context).pop();
@@ -78,7 +78,7 @@ class DialogEditData {
 
   void showdoneedit(
     BuildContext context, {
-    String title = 'تم التعديل بنجاح',
+    required String title,
     VoidCallback? onPress,
     bool success = true,
   }) {
@@ -91,11 +91,13 @@ class DialogEditData {
             width: 50,
             height: 50,
             decoration: BoxDecoration(
-              color: success? Color.fromARGB(255, 77, 235, 95): Colors.red,
+              color: success ? Color.fromARGB(255, 77, 235, 95) : Colors.red,
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: success? Color.fromARGB(255, 77, 235, 95).withOpacity(0.5) : Colors.red.withOpacity(0.5),
+                  color: success
+                      ? Color.fromARGB(255, 77, 235, 95).withOpacity(0.5)
+                      : Colors.red.withOpacity(0.5),
                   spreadRadius: 2,
                   blurRadius: 6,
                   offset: Offset(1, 4),
@@ -108,7 +110,7 @@ class DialogEditData {
           ),
           content: Text(
             textAlign: TextAlign.center,
-            success? title : 'فشل',
+            success ? title : S.of(context).edit_failed,
             style: AppText.style10w600(context),
           ),
           actions: [
@@ -124,7 +126,7 @@ class DialogEditData {
 
                   child: Text(
                     textAlign: TextAlign.center,
-                    'موافق',
+                    S.of(context).ok,
                     style: AppText.style8w700(context),
                   ),
                 ),
@@ -138,7 +140,7 @@ class DialogEditData {
 }
 
 class EditingFeild extends StatelessWidget {
-  EditingFeild({super.key, required this.hint, required this.nameController, });
+  EditingFeild({super.key, required this.hint, required this.nameController});
   final String hint;
   final TextEditingController nameController;
 

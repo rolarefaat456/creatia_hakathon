@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 
 class Search extends StatelessWidget
 {
@@ -26,7 +27,7 @@ class Search extends StatelessWidget
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: Text(
-                    "ابحث عن منحة",
+                    S.of(context).search_hint,
                     style: AppText.style12w400(context).copyWith(fontFamily: 'Tajawal', color: AppColors.Grey)
                   ),
                 ),

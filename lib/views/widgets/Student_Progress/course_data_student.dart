@@ -1,11 +1,13 @@
-
 import 'package:flutter/material.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
 
 class CourseDataStudent extends StatelessWidget {
   const CourseDataStudent({
-    super.key, required this.text, required this.width, required this.color,
+    super.key,
+    required this.text,
+    required this.width,
+    required this.color,
   });
   final String text;
   final double width;
@@ -26,9 +28,7 @@ class CourseDataStudent extends StatelessWidget {
           margin: EdgeInsets.only(top: 10),
           height: 4,
           width: 92,
-          decoration: BoxDecoration(
-            color: AppColors.greychart
-          ),
+          decoration: BoxDecoration(color: AppColors.greychart),
           child: Row(
             children: [
               Container(
@@ -36,12 +36,12 @@ class CourseDataStudent extends StatelessWidget {
                 width: width,
                 decoration: BoxDecoration(
                   color: color,
-                  borderRadius: BorderRadius.circular(2)
+                  borderRadius: BorderRadius.circular(2),
                 ),
-              )
+              ),
             ],
           ),
-        )
+        ),
       ],
     );
   }

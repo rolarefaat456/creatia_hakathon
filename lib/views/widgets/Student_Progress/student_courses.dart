@@ -18,7 +18,7 @@ class StudentCourses extends StatelessWidget {
       builder: (context, value, child) {
         return ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: coursesData.course.length,
+          itemCount: coursesData.Courses(context).course.length,
           itemBuilder: (context, index) {
             return AnimatedContainer(
               duration: Duration(milliseconds: 300),
@@ -36,16 +36,12 @@ class StudentCourses extends StatelessWidget {
                 },
                 child: value.selectedindex == index
                     ? CourseDataSelected(
-                        studentCoursesModel: StudentCoursesModel(
-                          name: coursesData.course[index]['name'],
+                          name: coursesData.Courses(context).course[index]['name'],
                           contenercolor: AppColors.Blue,
                           textcolor: Colors.white,
-                        ),
                       )
                     : UnselectedCoursesStudent(
-                        studentCoursesModel: StudentCoursesModel(
-                          name: coursesData.course[index]['name'],
-                        ),
+                          name: coursesData.Courses(context).course[index]['name'],
                       ),
               ),
             );

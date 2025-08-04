@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hacathon_app/components/jointed_widgets/Confirmation_Login_text.dart';
-import 'package:hacathon_app/components/jointed_widgets/api_dialog.dart';
-import 'package:hacathon_app/components/jointed_widgets/backgoundcontainer.dart';
-import 'package:hacathon_app/components/jointed_widgets/button_sign.dart';
-import 'package:hacathon_app/components/jointed_widgets/confirmation_code.dart';
+import 'package:hacathon_app/components/widgets/Confirmation_Login_text.dart';
+import 'package:hacathon_app/components/widgets/api_dialog.dart';
+import 'package:hacathon_app/components/widgets/backgoundcontainer.dart';
+import 'package:hacathon_app/components/widgets/button_sign.dart';
+import 'package:hacathon_app/components/widgets/confirmation_code.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
-import 'package:hacathon_app/components/jointed_widgets/signinappbar.dart';
+import 'package:hacathon_app/components/widgets/signinappbar.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:provider/provider.dart';
 
@@ -46,8 +47,8 @@ class _ConfirmationLoginState extends State<ConfirmationLogin> {
                   Container(
                     // height: 190,
                     child: ConfirmationLoginText(
-                      firsttext: 'إنشاء حساب جديد',
-                      secondtext: 'قم بإدخال رقم التأكيد الخاص بك',
+                      firsttext: S.of(context).signup_button,
+                      secondtext: S.of(context).verify_subtitle,
                     ),
                   ),
 
@@ -77,7 +78,7 @@ class _ConfirmationLoginState extends State<ConfirmationLogin> {
                                       await value.ResendCode();
                                     },
                                     child: Text(
-                                      'إعادة إرسال الكود !',
+                                      S.of(context).resend_code,
                                       style: AppText.style10w600(context)
                                           .copyWith(
                                             decoration:
@@ -102,7 +103,7 @@ class _ConfirmationLoginState extends State<ConfirmationLogin> {
                                     : MediaQuery.sizeOf(context).height / 4,
                               ),
                               child: Button_Sign(
-                                text: 'التالي',
+                                text: S.of(context).next_button,
 
                                 onPress: () async {
                                   if (formkey.currentState!.validate()) {
@@ -132,7 +133,7 @@ class _ConfirmationLoginState extends State<ConfirmationLogin> {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
-                                          "You have an empty field",
+                                          S.of(context).empty_field_message,
                                         ),
                                       ),
                                     );
