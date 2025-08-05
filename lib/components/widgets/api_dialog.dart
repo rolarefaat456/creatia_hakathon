@@ -16,7 +16,7 @@ class ApiDialog {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: prov.check? Icon(Icons.check_circle_outline_rounded, color: AppColors.Dark_Green, size: 50,)
+          title: (prov.check?? false)? Icon(Icons.check_circle_outline_rounded, color: AppColors.Dark_Green, size: 50,)
           :Icon(Icons.cancel_outlined, color: Colors.red, size: 50,),
 
           content: Text(

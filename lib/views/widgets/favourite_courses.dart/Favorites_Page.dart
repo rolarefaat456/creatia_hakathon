@@ -15,17 +15,20 @@ class FavoritesPage extends StatelessWidget {
       backgroundColor: AppColors.white,
       body: Consumer<Control>(
         builder: (context, value, child) {
-          return Column(
-            children: [
-              SectionName(name: S.of(context).favorites_title,),
-              Expanded(
-                child: (value.allFavorite == null ||
-              value.allFavorite['data'] == null ||
-              value.allFavorite['data'].isEmpty) ? Center(child: Text(S.of(context).no_favorites)): value.isLoading
-              ? CircularProgressIndicator()
-              : CourseSection(name: S.of(context).booking_date, fontfamily: 'VEXA', source: 'Favorite',)
+          return Container(
+            width: double.infinity,
+            child: Column(
+              children: [
+                SectionName(name: S.of(context).favorites_title,),
+                Expanded(
+                  child: (value.allFavorite == null ||
+                value.allFavorite['data'] == null ||
+                value.allFavorite['data'].isEmpty) ? Center(child: Text(S.of(context).no_favorites)): value.isLoading
+                ? CircularProgressIndicator()
+                : CourseSection(name: S.of(context).booking_date, fontfamily: 'VEXA', source: 'Favorite',)
+              ),
+              ],
             ),
-            ],
           );
         }
       ),

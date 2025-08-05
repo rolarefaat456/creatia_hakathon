@@ -24,7 +24,6 @@ class CourseSection extends StatelessWidget {
     required this.source,
   });
 
-
   final String name, fontfamily, source;
   final int? specialIndex;
   final Color containercolor;
@@ -82,8 +81,10 @@ class CourseSection extends StatelessWidget {
                             } else if (source == 'Favorite') {
                               return BookCourseContent(
                                 image:
-                                (value.allFavorite != null && index < value.allFavorite.length) ?
-                                    '${value.baseUrl}/${value.allFavorite['data'][index]['user']['image']}' : '',
+                                    (value.allFavorite != null &&
+                                        index < value.allFavorite.length)
+                                    ? '${value.baseUrl}/${value.allFavorite['data'][index]['user']['image']}'
+                                    : '',
                                 name: value
                                     .allFavorite['data'][index]['course']['instractor']['name'],
                                 phone: value
@@ -125,18 +126,25 @@ class CourseSection extends StatelessWidget {
                                   ),
                                   child: source == 'Home'
                                       ? Image.network(
-                                        getImageUrl('${value.baseUrl}/${value.allCourses['data'][index]['image']}')
-                                          ,
+                                          getImageUrl(
+                                            '${value.baseUrl}/${value.allCourses['data'][index]['image']}',
+                                          ),
                                           fit: BoxFit.fill,
                                         )
                                       : source == 'Favorite'
                                       ?
-                                      // Image.network(
-                                      //     getImageUrl('${value.baseUrl}/${value.allFavorite['data'][index]['user']['image']}'),
-                                      //   )
+                                        // Image.network(
+                                        //     getImageUrl('${value.baseUrl}/${value.allFavorite['data'][index]['user']['image']}'),
+                                        //   )
+                                        // Image.network(
+                                        //   getImageUrl(
+                                        //     '${value.baseUrl}/${value.allFavorite['data'][index]['course']['image']}',
+                                        //   ),
+                                        // )
                                         Image.network(
-                                          getImageUrl('${value.baseUrl}/${value.allFavorite['data'][index]['course']['image']}'),
-                        )
+                                          getImageUrl(
+                                            '${value.baseUrl}/${value.allFavorite['data'][index]['myinstractor']['image']}',
+                                          ),)
                                       : Image.network(
                                           getImageUrl(
                                             '${value.baseUrl}/${value.myCourses['data'][index]['course']['myinstractor']['image']}',
@@ -193,8 +201,9 @@ class CourseSection extends StatelessWidget {
                                     },
                                     icon: Center(
                                       child: Icon(
-                                        source == 'Favorite' ? Icons.favorite :
-                                        Icons.favorite_border,
+                                        source == 'Favorite'
+                                            ? Icons.favorite
+                                            : Icons.favorite_border,
                                         size: 9,
                                       ),
                                     ),
@@ -208,7 +217,10 @@ class CourseSection extends StatelessWidget {
                             padding: const EdgeInsets.all(10),
                             child: Text(
                               source == 'Home'
-                                  ? value.allCourses['data'][index]['category'] : source == 'Favorite' ? value.allFavorite['data'][index]['course']['category']
+                                  ? value.allCourses['data'][index]['category']
+                                  : source == 'Favorite'
+                                  ? value
+                                        .allFavorite['data'][index]['course']['category']
                                   : value.myCourses['data'][index]['category'],
                               style: AppText.style12w400(
                                 context,
@@ -228,8 +240,12 @@ class CourseSection extends StatelessWidget {
                                               null
                                           ? value
                                                 .allCourses['data'][index]['instractor']['name']
-                                          : '' : source == 'Favorite' ? value.allFavorite['data'][index]['user']['name'] :
-                                          value.myCourses['data'][index]['course']['myinstractor']['name'],
+                                          : ''
+                                    : source == 'Favorite'
+                                    ? value
+                                          .allFavorite['data'][index]['user']['name']
+                                    : value
+                                          .myCourses['data'][index]['course']['myinstractor']['name'],
 
                                 // value.allCourses['data'][index]['instractor']['name'],
                                 style: AppText.style12w400(

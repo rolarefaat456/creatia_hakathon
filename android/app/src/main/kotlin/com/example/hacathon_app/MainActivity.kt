@@ -1,4 +1,4 @@
-package com.example.hacathon_app  // تأكدي من تطابقه مع manifest
+package com.example.hacathon_app
 
 import io.flutter.embedding.android.FlutterActivity
 

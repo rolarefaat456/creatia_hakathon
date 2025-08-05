@@ -70,6 +70,7 @@ class _ResetPasswordState extends State<ResetPassword> {
 
                                 onPress: () async {
                                   if (formkey.currentState!.validate()) {
+                                    FocusScope.of(context).unfocus();
                                     showDialog(
                                       context: context,
                                       barrierDismissible: false,
