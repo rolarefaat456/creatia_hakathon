@@ -11,9 +11,12 @@ class AstronautSecction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final prov = Provider.of<Control>(context, listen: false);
+    // عرض مؤشر تحميل لو البيانات مش موجودة
     return prov.getBanner == null ? CircularProgressIndicator() :
     Container(
       height: 320,
+          // عرض الاعلانات
+
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: prov.getBanner['data'].length,

@@ -16,7 +16,7 @@ class BookCourseContent extends StatelessWidget {
     required this.name,
     required this.phone, required this.source,
   });
-
+// Dialog خاص بالحجز
   BookDialog bookDialog = BookDialog();
 
   final String image, name, phone, source;
@@ -28,14 +28,16 @@ class BookCourseContent extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // AppBar المستخدم في البروفايل
             Container(height: 70, child: ProfileAppbar()),
+            // معلومات المدرب
             InstructorInfo(
               // m3lomat el modarb
               image: image,
               name: '${name} : ${S.of(context).instructor_label} ',
               emailorphone: phone,
             ),
-
+// حاوية معلومات الكورس ومستواه
             Container(
               margin: EdgeInsets.symmetric(vertical: 20, horizontal: 60),
               decoration: BoxDecoration(
@@ -44,6 +46,7 @@ class BookCourseContent extends StatelessWidget {
               ),
               child: Column(
                 children: [
+                  // اسم الكورس وشعاره
                   Container(
                     margin: EdgeInsets.only(top: 20),
                     child: ListTile(
@@ -61,10 +64,12 @@ class BookCourseContent extends StatelessWidget {
                     padding: const EdgeInsets.all(20),
                     child: Divider(height: 10, color: Colors.black12),
                   ),
+                  // Widget خاص بعرض مستويات الكورسات
                   CoursesDataLevels(source: source,),
                 ],
               ),
             ),
+            // زرار الحجز وزرار الشهادة
             Container(
               margin: EdgeInsets.only(top: 30),
               child: Row(

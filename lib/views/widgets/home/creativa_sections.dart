@@ -13,9 +13,11 @@ class CreativaSections extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<Control>(
       builder: (context, value, child) {
+        // عرض مؤشر تحميل لو البيانات مش جاهزة
         if (value.getcategory == null) {
       return Center(child: CircularProgressIndicator());
     }
+    // عرض السكاشن
         return ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: value.getcategory['data'].length,
@@ -25,6 +27,7 @@ class CreativaSections extends StatelessWidget {
               curve: Curves.easeOutQuart,
               margin: EdgeInsets.only(right: 10),
               decoration: BoxDecoration(
+                // تحديد السكشن
                 color: value.selectedindex == index
                     ? AppColors.Deep_vilot
                     : Colors.white,

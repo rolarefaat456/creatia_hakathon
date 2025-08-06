@@ -12,6 +12,7 @@ import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:provider/provider.dart';
 
+/// صفحة تأكيد الدخول بكود تحقق مكون من 4 خانات
 class ConfirmationLogin extends StatefulWidget {
   const ConfirmationLogin({super.key});
 
@@ -20,20 +21,20 @@ class ConfirmationLogin extends StatefulWidget {
 }
 
 class _ConfirmationLoginState extends State<ConfirmationLogin> {
-  late List<FocusNode> focusNodes;
-  GlobalKey<FormState> formkey = GlobalKey<FormState>();
-  ApiDialog apiDialog = ApiDialog();
+  late List<FocusNode> focusNodes; // قائمة لعناصر التحكم في التركيز بين خانات الكود
+  GlobalKey<FormState> formkey = GlobalKey<FormState>(); // مفتاح النموذج للتحقق من صحته
+  ApiDialog apiDialog = ApiDialog(); // لعرض الحوارات بعد التحقق
 
   @override
   void initState() {
     super.initState();
-    focusNodes = List.generate(4, (_) => FocusNode());
+    focusNodes = List.generate(4, (_) => FocusNode()); // إنشاء 4 عناصر تركيز (لكود مكون من 4 خانات)
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // container fy tdrygt el alwan
+      // الخلفية تحتوي على تدرج أو تصميم ثابت
       body: Backgoundcontainer(
         child: SingleChildScrollView(
           child: ConstrainedBox(
@@ -43,50 +44,53 @@ class _ConfirmationLoginState extends State<ConfirmationLogin> {
             child: IntrinsicHeight(
               child: Column(
                 children: [
+                  // شريط علوي مخصص لتسجيل الدخول
                   Container(height: 80, child: Signinappbar()),
+
+                  // نصوص العنوان والوصف (مرحبا - الرجاء إدخال الكود)
                   Container(
-                    // height: 190,
                     child: ConfirmationLoginText(
                       firsttext: S.of(context).signup_button,
                       secondtext: S.of(context).verify_subtitle,
                     ),
                   ),
 
+                  // النموذج الخاص بإدخال كود التحقق
                   Consumer<Control>(
                     builder: (context, value, child) {
                       return Form(
                         key: formkey,
                         child: Column(
                           children: [
+                            // مربعات إدخال الكود الأربعة
                             Center(
                               child: Container(
                                 height: 150,
                                 width: 250,
                                 margin: EdgeInsets.symmetric(horizontal: 20),
                                 child: ConfimationCode(
-                                  focusNodes: focusNodes,
-                                  opts: value.opts,
+                                  focusNodes: focusNodes, // تمرير التركيز لكل خانة
+                                  opts: value.opts,       // خيارات الإدخال (controllers)
                                 ),
                               ),
                             ),
+
+                            // رابط إعادة إرسال الكود
                             Padding(
                               padding: const EdgeInsets.all(50),
                               child: Consumer<Control>(
                                 builder: (context, value, child) {
                                   return InkWell(
                                     onTap: () async {
-                                      await value.ResendCode();
+                                      await value.ResendCode(); // إعادة إرسال الكود
                                     },
                                     child: Text(
                                       S.of(context).resend_code,
-                                      style: AppText.style10w600(context)
-                                          .copyWith(
-                                            decoration:
-                                                TextDecoration.underline,
-                                            decorationColor:
-                                                AppColors.Volit_Blue,
-                                            color: AppColors.Volit_Blue,
-                                          ),
+                                      style: AppText.style10w600(context).copyWith(
+                                        decoration: TextDecoration.underline,
+                                        decorationColor: AppColors.Volit_Blue,
+                                        color: AppColors.Volit_Blue,
+                                      ),
                                       textDirection: TextDirection.rtl,
                                       textAlign: TextAlign.right,
                                     ),
@@ -94,42 +98,47 @@ class _ConfirmationLoginState extends State<ConfirmationLogin> {
                                 },
                               ),
                             ),
+
+                            // زر التالي
                             Container(
                               margin: EdgeInsets.only(
                                 top: MediaQuery.sizeOf(context).width < 600
                                     ? MediaQuery.sizeOf(context).height / 4.5
                                     : MediaQuery.sizeOf(context).width < 1400
-                                    ? MediaQuery.sizeOf(context).height / 1.9
-                                    : MediaQuery.sizeOf(context).height / 4,
+                                        ? MediaQuery.sizeOf(context).height / 1.9
+                                        : MediaQuery.sizeOf(context).height / 4,
                               ),
                               child: Button_Sign(
                                 text: S.of(context).next_button,
-
+                                horizontal: 30,
                                 onPress: () async {
+                                  // تحقق من صحة النموذج قبل المتابعة
                                   if (formkey.currentState!.validate()) {
+                                    // عرض مؤشر تحميل أثناء العملية
                                     showDialog(
                                       context: context,
                                       barrierDismissible: false,
-                                      builder: (_) => Center(
-                                        child: CircularProgressIndicator(),
-                                      ),
+                                      builder: (_) => Center(child: CircularProgressIndicator()),
                                     );
+
+                                    // تنفيذ التحقق من الكود
                                     await value.Verify();
-                                    Navigator.of(context).pop();
+                                    Navigator.of(context).pop(); // إغلاق التحميل
+
+                                    // عرض نتيجة التحقق في حوار
                                     apiDialog.ShowApiDialog(
                                       context,
                                       title: value.vertfy['message'],
                                       onpressed: () {
                                         if (value.check) {
-                                          Navigator.of(
-                                            context,
-                                          ).pushNamed('SigninPage');
+                                          Navigator.of(context).pushNamed('SigninPage'); // الانتقال إلى صفحة الدخول
                                         } else {
-                                          Navigator.of(context).pop();
+                                          Navigator.of(context).pop(); // إغلاق الحوار فقط
                                         }
                                       },
                                     );
                                   } else {
+                                    // في حال كانت الحقول فارغة أو غير صحيحة
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                         content: Text(
@@ -139,7 +148,6 @@ class _ConfirmationLoginState extends State<ConfirmationLogin> {
                                     );
                                   }
                                 },
-                                horizontal: 30,
                               ),
                             ),
                           ],

@@ -6,6 +6,7 @@ import 'package:hacathon_app/views/widgets/home/astronaut_section.dart';
 import 'package:hacathon_app/views/widgets/home/creativa_sections.dart';
 import 'package:hacathon_app/views/widgets/home/search.dart';
 
+// الصفحة الرئيسية لعرض الأقسام والكورسات
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -23,20 +24,23 @@ class _HomePageState extends State<HomePage> {
         margin: EdgeInsets.all(15),
         child: Column(
           children: [
+            // حقل البحث
             Container(
               margin: EdgeInsets.all(10),
               height: 50,
               child: Search(),
             ),
-            // image ra2d el fda2
+            // صورة بانر
             AstronautSecction(),
             // sections
+            // أقسام الكورسات
             Container(
               height: 50,
               margin: EdgeInsets.symmetric(vertical: 15),
               child: CreativaSections()
             ),
             // section courses
+            // الكورسات
             Expanded(
               child: CourseSection(name: S.of(context).booking_date, fontfamily: 'VEXA', source: 'Home',)
             ),

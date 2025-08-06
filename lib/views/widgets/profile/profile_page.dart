@@ -29,6 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SingleChildScrollView(
+        // have a profile image and username
         child: Container(
           width: double.infinity,
           child: Column(
@@ -47,6 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       child: Column(
                         children: [
+                          // زر التعديل في أقصى اليمين
                           Row(
                             children: [
                               Spacer(),
@@ -74,6 +76,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                             ],
                           ),
+                          // الاسم
                           Padding(
                             padding: const EdgeInsets.only(top: 40, bottom: 15),
                             child: Text(
@@ -84,6 +87,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                             ),
                           ),
+                          // البريد 
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             child: Text(
@@ -97,17 +101,17 @@ class _ProfilePageState extends State<ProfilePage> {
                         ],
                       ),
                     ),
+                     // صورة البروفايل في المنتصف
                     CircleAvatar(
                       radius: 60,
                       backgroundImage: NetworkImage(
-                        // getImageUrl(
                           widget.image
-                          // )
                         ),
                     ),
                   ],
                 ),
               ),
+              // العنوان "معلومات أساسية"
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 30),
                 child: Text(
@@ -115,6 +119,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   style: AppText.style18w400(context),
                 ),
               ),
+              // عرض البيانات الشخصية باستخدام Consumer
               Consumer<Control>(
                 builder: (context, value, child) {
                   return Form(
@@ -192,6 +197,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   );
                 },
               ),
+              // زر تسجيل الخروج
               Consumer<Control>(
                 builder: (context, value, child) {
                   return Container(
@@ -200,6 +206,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       text: S.of(context).logout,
                       horizontal: 20,
                       onPress: () async {
+                        // عرض مؤشر تحميل أثناء تنفيذ العملية
                         showDialog(
                           context: context,
                           barrierDismissible: false,
@@ -207,7 +214,9 @@ class _ProfilePageState extends State<ProfilePage> {
                               Center(child: CircularProgressIndicator()),
                         );
                         await value.Logout();
-                        Navigator.of(context).pop();
+                        Navigator.of(context).pop(); // إغلاق مؤشر التحميل
+
+                        // عرض رسالة الخروج
                         apiDialog.ShowApiDialog(
                           context,
                           title: value.logout['message'],

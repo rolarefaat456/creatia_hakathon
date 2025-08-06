@@ -5,17 +5,20 @@ import 'package:hacathon_app/components/utils/app_colors.dart';
 import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/views/widgets/notifications/notification_data.dart';
 
+/// صفحة الإشعارات الرئيسية
 class NotificationsPage extends StatelessWidget {
   const NotificationsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.white, // تعيين لون خلفية الصفحة
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // اسم القسم - يتم ترجمته باستخدام ملفات الترجمة
             SectionName(name: S.of(context).notifications,),
+            // ويدجت تعرض بيانات الإشعارات نفسها (تم إنشاؤها مسبقاً)
               NotificationData()
           ],
         ),

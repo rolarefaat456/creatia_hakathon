@@ -19,19 +19,22 @@ class EditProfileView extends StatefulWidget {
 }
 
 class _EditProfileViewState extends State<EditProfileView> {
+  // for edit password
   DialogEditData dialogEditData = DialogEditData();
+  // for show is success or failure
   ApiDialog apiDialog = ApiDialog();
-
+  // key form to check if all the feilds is right
   GlobalKey<FormState> formkey = GlobalKey();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    // تحميل البيانات الشخصية من المزود عند تشغيل الصفحة
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       final prov = Provider.of<Control>(context, listen: false);
-      await prov.Profile();
-      prov.initializeControllers();
+      await prov.Profile();// جلب بيانات المستخدم
+      prov.initializeControllers();// ملء الـ Controllers بالقيم
     });
   }
 
@@ -53,18 +56,17 @@ class _EditProfileViewState extends State<EditProfileView> {
                   }
                   return Column(
                     children: [
+                      // شريط التطبيق الخاص بالملف الشخصي
                       Container(height: 70, child: ProfileAppbar()),
+                      // صورة المستخدم مع زر التعديل
                       Stack(
                         alignment: Alignment.bottomRight,
                         children: [
                           CircleAvatar(
                             radius: 90,
                             backgroundImage:
-                                 NetworkImage(
-                                  //  getImageUrl(
-                                  
+                                 NetworkImage(                                  
                                     "${value.baseUrl}/${value.profile['data']['image']}"
-                                    // ) 
                                 )
                                
                           ),
@@ -75,6 +77,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                               builder: (context, value, child) {
                                 return IconButton(
                                   onPressed: () {
+                                    // اختيار صورة جديدة
                                     value.pickImageFromGallery();
                                   },
                                   icon: Container(
@@ -99,6 +102,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                           ),
                         ],
                       ),
+                      // عنوان "البيانات الأساسية"
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 30),
                         child: Text(
@@ -106,6 +110,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                           style: AppText.style18w400(context),
                         ),
                       ),
+                      // النموذج الخاص بتعديل البيانات
                       Form(
                         key: formkey,
                         child: Column(
@@ -140,6 +145,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                 nameController: value.profileemail,
                               ),
                             ),
+                            // حقل كلمة المرور (يؤدي إلى Dialog تعديل كلمة المرور)
                             Container(
                               width: MediaQuery.sizeOf(context).width < 600
                                   ? MediaQuery.sizeOf(context).width / 1.2
@@ -191,6 +197,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                 ),
                               ),
                             ),
+                            // city
                             Container(
                               margin: EdgeInsets.only(bottom: 10),
                               child: ProfileFormFeild(
@@ -201,6 +208,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                                 nameController: value.profilecity,
                               ),
                             ),
+                             // أزرار الحفظ والإلغاء
                             Container(
                               margin: EdgeInsets.only(top: MediaQuery.sizeOf(context).width < 600
                                     ? MediaQuery.sizeOf(context).height / 10
@@ -210,6 +218,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
+                                  // زر الحفظ
                                   Button_Sign(
                                     text: S.of(context).cancel,
                                     horizontal: 20,

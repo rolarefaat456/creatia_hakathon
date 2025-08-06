@@ -7,7 +7,6 @@ import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:provider/provider.dart';
 
-
 class Onboard extends StatefulWidget {
   const Onboard({super.key});
 
@@ -16,9 +15,6 @@ class Onboard extends StatefulWidget {
 }
 
 class _OnboardState extends State<Onboard> {
-
-  
-
   @override
   void initState() {
     super.initState();
@@ -43,18 +39,18 @@ class _OnboardState extends State<Onboard> {
               actions: [
                 Consumer<Control>(
                   builder: (context, value, child) {
-                    return 
-                    Container(
+                    return Container(
                       margin: EdgeInsets.only(
-                        left: value.isArabic()? 10 : 0,
-                        right: value.isArabic()? 0 : 10
+                        left: value.isArabic() ? 10 : 0,
+                        right: value.isArabic() ? 0 : 10,
                       ),
-                    //   child: IconButton(
-                    //   onPressed: () {
-                    //     value.ChangeLanguage();
-                    //   },
-                    //   icon: Icon(Icons.language, color: AppColors.Blue,),
-                    // )
+                      // buttton changing the language
+                      //   child: IconButton(
+                      //   onPressed: () {
+                      //     value.ChangeLanguage();
+                      //   },
+                      //   icon: Icon(Icons.language, color: AppColors.Blue,),
+                      // )
                     );
                   },
                 ),
@@ -134,10 +130,7 @@ class _OnboardState extends State<Onboard> {
                           Padding(
                             padding: const EdgeInsets.only(top: 90, bottom: 20),
                             child: Text(
-                              S
-                                  .of(context)
-                                  .BoardTitle, // el key elly adato ll gomla bt3ty
-                              // 'مركز إبداع مصر الرقمي',
+                              S.of(context).BoardTitle, // text with translation
                               style: AppText.style32w400(context),
                             ),
                           ),
@@ -153,7 +146,7 @@ class _OnboardState extends State<Onboard> {
                               textAlign: TextAlign.center,
                             ),
                           ),
-                          // botton
+                          // button
                           Container(
                             margin: EdgeInsets.only(
                               top: MediaQuery.sizeOf(context).width < 600

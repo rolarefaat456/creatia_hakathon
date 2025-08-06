@@ -19,7 +19,9 @@ class FavoritesPage extends StatelessWidget {
             width: double.infinity,
             child: Column(
               children: [
+                // عنوان القسم
                 SectionName(name: S.of(context).favorites_title,),
+                // عرض محتوى المفضلة أو تحميل أو رسالة فارغة
                 Expanded(
                   child: (value.allFavorite == null ||
                 value.allFavorite['data'] == null ||

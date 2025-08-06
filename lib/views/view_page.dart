@@ -19,6 +19,7 @@ class ViewPage extends StatefulWidget {
 }
 
 class _ViewPageState extends State<ViewPage> {
+  // تحميل البيانات عند فتح الصفحة لأول مرة
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -57,6 +58,7 @@ class _ViewPageState extends State<ViewPage> {
       builder: (context, value, child) {
         return Scaffold(
           backgroundColor: AppColors.white,
+          // شريط التطبيق العلوي (AppBar)
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(
               MediaQuery.sizeOf(context).width < 600
@@ -69,11 +71,13 @@ class _ViewPageState extends State<ViewPage> {
               padding: const EdgeInsets.all(10),
               child: Row(
                 children: [
+                  // شعار التطبيق
                   AspectRatio(
                     aspectRatio: 28 / 40,
                     child: Image.asset(Assets.imagesCreativaLogo2),
                   ),
                   Spacer(),
+                  // زر التنقل إلى صفحة الطالب
                   Container(
                     margin: EdgeInsets.only(right: 10),
                     child: InkWell(
@@ -92,6 +96,7 @@ class _ViewPageState extends State<ViewPage> {
                       ),
                     ),
                   ),
+                   // صورة البروفايل
                   AspectRatio(
                     aspectRatio: 1,
                     child: CircleAvatar(
@@ -102,9 +107,11 @@ class _ViewPageState extends State<ViewPage> {
               ),
             ),
           ),
+          // جسم الصفحة - التبديل بين الصفحات
           body: IndexedStack(
             index: value.CurrentIndex,
             children: [
+              // التحقق من وجود بيانات البروفايل قبل عرضها
               value.profile != null && value.profile['data'] != null
                   ? ProfilePage(
                       image:
@@ -119,6 +126,7 @@ class _ViewPageState extends State<ViewPage> {
               HomePage(),
             ],
           ),
+          // شريط التنقل السفلي (Bottom Navigation)
           bottomNavigationBar: Consumer<Control>(
             builder: (context, value, child) {
               return BottomNavigationBar(
@@ -134,6 +142,7 @@ class _ViewPageState extends State<ViewPage> {
                 selectedIconTheme: IconThemeData(color: AppColors.Blue),
                 unselectedIconTheme: IconThemeData(color: AppColors.Black),
                 items: [
+                  // كل عنصر في الـ BottomNavigationBar له أيقونة وتسمية
                   BottomNavigationBarItem(
                     icon: Image.asset(
                       Assets.imagesUser,

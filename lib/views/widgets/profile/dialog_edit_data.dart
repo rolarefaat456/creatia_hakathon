@@ -5,7 +5,7 @@ import 'package:hacathon_app/components/utils/app_text.dart';
 import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:provider/provider.dart';
-
+// class for edit password
 class DialogEditData {
   Future<void> ShowEditData(BuildContext context) async {
     final prov = Provider.of<Control>(context, listen: false);
@@ -45,7 +45,8 @@ class DialogEditData {
                 ),
               ),
             ],
-          ),
+          ), 
+          // button for save the password
           actions: [
             Center(
               child: Button_Sign(
@@ -57,8 +58,10 @@ class DialogEditData {
                     barrierDismissible: false,
                     builder: (_) => Center(child: CircularProgressIndicator()),
                   );
+                  // update password
                   await prov.UpdatePassword();
                   Navigator.of(context).pop();
+                  // show dialog for success
                   showdoneedit(
                     context,
                     title: S.of(context).edit_success,
@@ -75,7 +78,7 @@ class DialogEditData {
       },
     );
   }
-
+// dialog for success or failure 
   void showdoneedit(
     BuildContext context, {
     required String title,
@@ -138,7 +141,7 @@ class DialogEditData {
     );
   }
 }
-
+/// ويدجيت حقل نصوص قابل لإعادة الاستخدام لتعديل البيانات
 class EditingFeild extends StatelessWidget {
   EditingFeild({super.key, required this.hint, required this.nameController});
   final String hint;

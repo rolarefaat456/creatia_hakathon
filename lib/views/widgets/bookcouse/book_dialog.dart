@@ -7,20 +7,23 @@ import 'package:hacathon_app/views/widgets/profile/dialog_edit_data.dart';
 import 'package:provider/provider.dart';
 
 class BookDialog {
+  // dialog  لعرض نجاح العمليه بعد الحجز 
   DialogEditData dialogEditData = DialogEditData();
-
+// دالة لعرض نافذة الحجز
   void showbookdialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
           backgroundColor: Colors.white,
+           // عنوان الـ Dialog
           title: Center(
             child: Text(
               S.of(context).subscribeRequest,
               style: AppText.style18w400(context),
             ),
           ),
+          // المحتوى: مجموعة من الحقول لإدخال بيانات المستخدم
           content: Consumer<Control>(
             builder: (context, value, child) {
               return Form(
@@ -74,6 +77,7 @@ class BookDialog {
               );
             },
           ),
+           // زر إرسال الطلب
           actions: [
             Consumer<Control>(
               builder: (context, value, child) {
@@ -88,8 +92,11 @@ class BookDialog {
                         builder: (_) =>
                             Center(child: CircularProgressIndicator()),
                       );
+                      // إرسال الطلب
                       await value.ReqeustBook();
+                      // إغلاق الـ loading
                       Navigator.of(context).pop();
+                      // عرض رسالة نجاح
                       dialogEditData.showdoneedit(
                         title: S.of(context).Book_success,
                         context,
