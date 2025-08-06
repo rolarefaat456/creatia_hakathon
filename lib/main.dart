@@ -40,15 +40,18 @@ void main() async {
   ]);
   
   runApp(
-    ChangeNotifierProvider.value(
-      value: control,
-      // create: (context) => Control(),
-      child: DevicePreview(
-        enabled: true,
-        builder: (context) {
-          return MyApp();
-        },
-      ),
+    ChangeNotifierProvider
+    // .value
+    (
+      // value: control,
+      create: (context) => Control(),
+      // child: DevicePreview(
+      //   enabled: true,
+        // builder: (context) {
+          // return 
+          child: MyApp(),
+        // },
+      // ),
     ),
   );
 }

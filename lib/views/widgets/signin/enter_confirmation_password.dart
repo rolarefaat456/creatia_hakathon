@@ -105,7 +105,6 @@ class _EnterConfirmationPasswordState extends State<EnterConfirmationPassword> {
                                 text: S.of(context).next_button,
 
                                 onPress: () async {
-                                  // Navigator.of(context).pushNamed('CreateNewPassword');
                                   if (formkey.currentState!.validate()) {
                                     showDialog(
                                       context: context,
