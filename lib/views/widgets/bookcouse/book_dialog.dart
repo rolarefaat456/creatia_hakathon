@@ -91,7 +91,7 @@ class BookDialog {
                       await value.ReqeustBook();
                       Navigator.of(context).pop();
                       dialogEditData.showdoneedit(
-                        title: S.of(context).edit_success,
+                        title: S.of(context).Book_success,
                         context,
                         onPress: () {
                           Navigator.of(context).pop();

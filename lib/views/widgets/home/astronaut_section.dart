@@ -31,7 +31,10 @@ class AstronautSecction extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
         image: DecorationImage(
           image: NetworkImage(
-            getImageUrl('${prov.baseUrl}/${prov.getBanner['data'][index]['image']}')
+            // getImageUrl(
+
+  getFullImageUrl(prov.getBanner['data'][index]['image']),
+              // )
           ),
           fit: BoxFit.fill
         ),

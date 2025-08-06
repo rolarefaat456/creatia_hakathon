@@ -30,14 +30,14 @@ class CoursesDataLevels extends StatelessWidget {
           itemBuilder: (context, index) {
             return ListTile(
               title: Text(
-                source == 'Favorite' ? value.allFavorite['data'][index]['sections']['title'] :
+                
                   value.allSections['data'][index]['title'] ,
                   style: AppText.style16w400(context).copyWith(fontFamily: 'Finger_Paint', color: AppColors.Blue),
                 ),
                 subtitle: Padding(
   padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
   child: Text(
-    source == 'Favorite' ? (value.allFavorite?['data']?[index]?['sections']?['lessons'] as List<dynamic>?)?.join('\n') ?? 'No lessons'  :
+    
     (value.allSections?['data']?[index]?['lessons'] as List<dynamic>?)?.join('\n') ?? 'No lessons',
     textAlign: TextAlign.start,
     style: AppText.style12w400(context).copyWith(color: AppColors.Black),

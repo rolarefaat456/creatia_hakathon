@@ -28,6 +28,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "BoardTitle": MessageLookupByLibrary.simpleMessage(
       "Digital Egypt Innovation Hub",
     ),
+    "Book_success": MessageLookupByLibrary.simpleMessage(
+      "Booking Successfully",
+    ),
     "BourdButton": MessageLookupByLibrary.simpleMessage("Start with us now"),
     "Language": MessageLookupByLibrary.simpleMessage("Choose Language"),
     "age_hint": MessageLookupByLibrary.simpleMessage("Age"),

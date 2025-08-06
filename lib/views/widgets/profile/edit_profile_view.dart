@@ -3,7 +3,6 @@ import 'package:hacathon_app/components/widgets/api_dialog.dart';
 import 'package:hacathon_app/components/widgets/button_sign.dart';
 import 'package:hacathon_app/components/widgets/profile_appbar.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
-import 'package:hacathon_app/components/utils/app_images.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
 import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
@@ -61,10 +60,13 @@ class _EditProfileViewState extends State<EditProfileView> {
                           CircleAvatar(
                             radius: 90,
                             backgroundImage:
-                                value.profile['data']['image'] != null
-                                ? NetworkImage( getImageUrl(value.profile['data']['image']) )
-                                      as ImageProvider
-                                : AssetImage(Assets.imagesElprofile),
+                                 NetworkImage(
+                                  //  getImageUrl(
+                                  
+                                    "${value.baseUrl}/${value.profile['data']['image']}"
+                                    // ) 
+                                )
+                               
                           ),
                           Positioned(
                             top: 145,

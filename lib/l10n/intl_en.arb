@@ -38,6 +38,7 @@
   "confirm_new_password": "Confirm New Password",
   "save_password": "Save Password",
   "edit_success": "Edited Successfully",
+  "Book_success" : "Booking Successfully",
   "edit_failed": "Failed",
   "ok": "OK",
   "basic_info": "Basic Information",

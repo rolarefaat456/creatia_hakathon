@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,13 +18,19 @@ import 'package:hacathon_app/views/widgets/signin/loginpage.dart';
 import 'package:hacathon_app/views/widgets/signin/reset_password.dart';
 import 'package:hacathon_app/views/widgets/signin/signinpage.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Directory dir = await getApplicationDocumentsDirectory();
+  await Hive.initFlutter(
+    dir.path
+  );
   await Hive.openBox('settings');
+  await Hive.openBox('token');
   final control = Control();
   await control.getSavedLanguage();
   await FlutterLocalization.instance.ensureInitialized();
@@ -30,12 +38,7 @@ void main() async {
     // bysht8l by el tol bs
     DeviceOrientation.portraitUp,
   ]);
-  // Directory dir = await getApplicationDocumentsDirectory();
-  await Hive.initFlutter(
-    // dir.path
-  );
-  await Hive.openBox('settings');
-  await Hive.openBox('token');
+  
   runApp(
     ChangeNotifierProvider.value(
       value: control,

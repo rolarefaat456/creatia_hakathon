@@ -99,7 +99,11 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     CircleAvatar(
                       radius: 60,
-                      backgroundImage: NetworkImage(getImageUrl(widget.image)),
+                      backgroundImage: NetworkImage(
+                        // getImageUrl(
+                          widget.image
+                          // )
+                        ),
                     ),
                   ],
                 ),

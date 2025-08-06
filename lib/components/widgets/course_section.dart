@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hacathon_app/components/widgets/api_dialog.dart';
 import 'package:hacathon_app/components/widgets/button_courses_section.dart';
-import 'package:hacathon_app/components/utils/app_images.dart';
+import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:hacathon_app/views/widgets/Student_Progress/courses_content_view.dart';
 import 'package:hacathon_app/components/models/button_courses_model.dart';
@@ -41,7 +41,7 @@ class CourseSection extends StatelessWidget {
                     ? value.allCourses['data'].length
                     : source == 'Favorite'
                     ? value.allFavorite['data'].length
-                    : value.myCourses['data'].length,
+                : value.myCourses['data'].length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: MediaQuery.sizeOf(context).width < 600
                       ? 2
@@ -83,12 +83,11 @@ class CourseSection extends StatelessWidget {
                                 image:
                                     (value.allFavorite != null &&
                                         index < value.allFavorite.length)
-                                    ? '${value.baseUrl}/${value.allFavorite['data'][index]['user']['image']}'
+                                    ? '${value.baseUrl}/${value.allFavorite['data'][index]['myinstractor']['image']}'
                                     : '',
-                                name: value
-                                    .allFavorite['data'][index]['course']['instractor']['name'],
+                                name: value.allInstractors['data'][index]['name'],
                                 phone: value
-                                    .allFavorite['data'][index]['course']['instractor']['phone'],
+                                    .allInstractors['data'][index]['phone'],
                                 source: 'Favorite',
                               );
                             } else {
@@ -126,34 +125,20 @@ class CourseSection extends StatelessWidget {
                                   ),
                                   child: source == 'Home'
                                       ? Image.network(
-                                          getImageUrl(
+                                          // getImageUrl(
                                             '${value.baseUrl}/${value.allCourses['data'][index]['image']}',
-                                          ),
+                                          // ),
                                           fit: BoxFit.fill,
                                         )
                                       : source == 'Favorite'
-                                      ?
-                                        // Image.network(
-                                        //     getImageUrl('${value.baseUrl}/${value.allFavorite['data'][index]['user']['image']}'),
-                                        //   )
-                                        // Image.network(
-                                        //   getImageUrl(
-                                        //     '${value.baseUrl}/${value.allFavorite['data'][index]['course']['image']}',
-                                        //   ),
-                                        // )
-                                        Image.network(
-                                          getImageUrl(
+                                      ? Image.network(
                                             '${value.baseUrl}/${value.allFavorite['data'][index]['myinstractor']['image']}',
-                                          ),)
+                                          )
                                       : Image.network(
-                                          getImageUrl(
-                                            '${value.baseUrl}/${value.myCourses['data'][index]['course']['myinstractor']['image']}',
-                                          ),
-                                          fit: BoxFit.fill,
-                                          errorBuilder:
-                                              (context, error, stackTrace) {
-                                                return Icon(Icons.broken_image);
-                                              },
+                                          // getImageUrl(
+                                            '${value.baseUrl}/${value.allCourses['data'][index]['image']}',
+                                          // ),
+                                          
                                         ),
                                 ),
                               ),
@@ -219,9 +204,8 @@ class CourseSection extends StatelessWidget {
                               source == 'Home'
                                   ? value.allCourses['data'][index]['category']
                                   : source == 'Favorite'
-                                  ? value
-                                        .allFavorite['data'][index]['course']['category']
-                                  : value.myCourses['data'][index]['category'],
+                                  ? value.allFavorite?['data']?[index]?['course']?['category'] ?? ""
+                                  : value.myCourses?['data']?[index]?['category'] ?? value.allCourses['data'][index]['category'],
                               style: AppText.style12w400(
                                 context,
                               ).copyWith(color: AppColors.Black),
@@ -243,9 +227,9 @@ class CourseSection extends StatelessWidget {
                                           : ''
                                     : source == 'Favorite'
                                     ? value
-                                          .allFavorite['data'][index]['user']['name']
+                                          .allFavorite?['data']?[index]?['myinstractor']?['name'] ?? " no favorite"
                                     : value
-                                          .myCourses['data'][index]['course']['myinstractor']['name'],
+                                          .myCourses?['data']?[index]?['course']?['myinstractor']?['name'] ?? value.allCourses['data'][index]['myinstractor']['name'],
 
                                 // value.allCourses['data'][index]['instractor']['name'],
                                 style: AppText.style12w400(

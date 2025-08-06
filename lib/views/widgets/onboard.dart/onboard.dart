@@ -49,12 +49,12 @@ class _OnboardState extends State<Onboard> {
                         left: value.isArabic()? 10 : 0,
                         right: value.isArabic()? 0 : 10
                       ),
-                      child: IconButton(
-                      onPressed: () {
-                        value.ChangeLanguage();
-                      },
-                      icon: Icon(Icons.language, color: AppColors.Blue,),
-                    )
+                    //   child: IconButton(
+                    //   onPressed: () {
+                    //     value.ChangeLanguage();
+                    //   },
+                    //   icon: Icon(Icons.language, color: AppColors.Blue,),
+                    // )
                     );
                   },
                 ),

@@ -394,6 +394,16 @@ class S {
     );
   }
 
+  /// `Booking Successfully`
+  String get Book_success {
+    return Intl.message(
+      'Booking Successfully',
+      name: 'Book_success',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Failed`
   String get edit_failed {
     return Intl.message('Failed', name: 'edit_failed', desc: '', args: []);

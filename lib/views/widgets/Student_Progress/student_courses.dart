@@ -14,11 +14,12 @@ class StudentCourses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final courseList = coursesData.Courses(context);
     return Consumer<Control>(
       builder: (context, value, child) {
         return ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: coursesData.Courses(context).course.length,
+          itemCount: courseList.length,
           itemBuilder: (context, index) {
             return AnimatedContainer(
               duration: Duration(milliseconds: 300),
@@ -36,12 +37,12 @@ class StudentCourses extends StatelessWidget {
                 },
                 child: value.selectedindex == index
                     ? CourseDataSelected(
-                          name: coursesData.Courses(context).course[index]['name'],
+                          name: courseList[index]['name'],
                           contenercolor: AppColors.Blue,
                           textcolor: Colors.white,
                       )
                     : UnselectedCoursesStudent(
-                          name: coursesData.Courses(context).course[index]['name'],
+                          name: courseList[index]['name'],
                       ),
               ),
             );

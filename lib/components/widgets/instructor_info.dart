@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hacathon_app/components/utils/app_colors.dart';
-import 'package:hacathon_app/components/utils/app_images.dart';
 import 'package:hacathon_app/components/utils/app_text.dart';
 
 class InstructorInfo extends StatefulWidget {
@@ -56,7 +55,11 @@ class _InstructorInfoState extends State<InstructorInfo> {
                   ),
                   CircleAvatar(
                     radius: 70,
-                    backgroundImage: NetworkImage( getImageUrl(widget.image) ),
+                    backgroundImage: NetworkImage( 
+                      // getImageUrl(
+                        widget.image
+                        // ) 
+                        ),
                   ),
                   
                 ],

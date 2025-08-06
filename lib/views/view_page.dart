@@ -39,7 +39,7 @@ class _ViewPageState extends State<ViewPage> {
     Consumer<Control>(
       builder: (context, value, child) {
         return ProfilePage(
-          image: value.profile['data']['image'],
+          image: "${value.baseUrl}/${value.profile['data']['image']}",
           name: value.profile['data']['name'],
           emailorphone: value.profile['data']['email'],
         );
@@ -108,7 +108,7 @@ class _ViewPageState extends State<ViewPage> {
               value.profile != null && value.profile['data'] != null
                   ? ProfilePage(
                       image:
-                          value.profile['data']['image'] ??
+                          "${value.baseUrl}/${value.profile['data']['image']}" ??
                           Assets.imagesElprofile,
                       name: value.profile['data']['name'],
                       emailorphone: value.profile['data']['email'],

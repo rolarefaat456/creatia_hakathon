@@ -34,7 +34,7 @@ class DialogEditData {
                 margin: EdgeInsets.only(bottom: 10),
                 child: EditingFeild(
                   hint: S.of(context).new_password_hint,
-                  nameController: prov.password,
+                  nameController: prov.passwordd,
                 ),
               ),
               Container(

@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "منظومة متكاملة لدعم الابتكار وريادة الأعمال في قطاع الاتصالات وتكنولوجيا المعلومات",
     ),
     "BoardTitle": MessageLookupByLibrary.simpleMessage("مركز إبداع مصر الرقمي"),
+    "Book_success": MessageLookupByLibrary.simpleMessage("تم التسجيل بنجاح"),
     "BourdButton": MessageLookupByLibrary.simpleMessage("إبدء معنا الان"),
     "Language": MessageLookupByLibrary.simpleMessage("اختر اللغه"),
     "age_hint": MessageLookupByLibrary.simpleMessage("العمر"),

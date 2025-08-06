@@ -30,6 +30,7 @@ class Control extends ChangeNotifier {
   TextEditingController phone = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  TextEditingController passwordd = TextEditingController();
   TextEditingController password_confirmation = TextEditingController();
   TextEditingController city = TextEditingController();
   TextEditingController complain = TextEditingController();
@@ -262,10 +263,10 @@ class Control extends ChangeNotifier {
     setLoading(true);
 
     Object body = {};
-
+print("token is ${tokenbox.get("token")}");
 
     try {
-      logout = await api.postapi2("https://cors-anywhere.herokuapp.com/$baseUrl/api/logout", body, tokenbox.get("token"),);
+      logout = await api.postapi2("$baseUrl/api/logout", body, tokenbox.get("token"),);
       print(logout);
       if (logout != null && logout['status'] == true) {
         await tokenbox.delete("token");
@@ -393,7 +394,7 @@ class Control extends ChangeNotifier {
 
     try {
       profile = await api.getapi2(
-        "https://cors-anywhere.herokuapp.com/$baseUrl/api/profile",
+        "$baseUrl/api/profile",
         tokenbox.get("token"),
         // token!
       );
@@ -445,7 +446,7 @@ class Control extends ChangeNotifier {
     try {
       if (_image != null) {
         updateProfile = await api.postapiimage(
-          'https://cors-anywhere.herokuapp.com/$baseUrl/api/profile',
+          '$baseUrl/api/profile',
           body,
           _image,
           tokenbox.get("token"),
@@ -453,7 +454,7 @@ class Control extends ChangeNotifier {
       } else {
         print(username.text);
         updateProfile = await api.postapi2(
-          'https://cors-anywhere.herokuapp.com/$baseUrl/api/profile',
+          '$baseUrl/api/profile',
           body,
           tokenbox.get("token"),
         );
@@ -491,7 +492,7 @@ class Control extends ChangeNotifier {
 
     try {
       updatePassword = await api.putapi(
-        'https://cors-anywhere.herokuapp.com/$baseUrl/api/profile',
+        '$baseUrl/api/profile',
         body,
         tokenbox.get("token"),
       );
@@ -521,7 +522,7 @@ class Control extends ChangeNotifier {
     setLoading(true);
     try {
       getcategory = await api.getapi2(
-        "https://cors-anywhere.herokuapp.com/$baseUrl/api/categories",
+        "$baseUrl/api/categories",
         tokenbox.get("token"),
       );
       print('getcategory $getcategory');
@@ -551,7 +552,7 @@ class Control extends ChangeNotifier {
     setLoading(true);
     try {
       getBanner = await api.getapi2(
-        "https://cors-anywhere.herokuapp.com/$baseUrl/api/banners",
+        "$baseUrl/api/banners",
         tokenbox.get("token"),
       );
       print("getBanner $getBanner");
@@ -581,7 +582,7 @@ class Control extends ChangeNotifier {
     setLoading(true);
     try {
       allInstractors = await api.getapi2(
-        "https://cors-anywhere.herokuapp.com/$baseUrl/api/instractors",
+        "$baseUrl/api/instractors",
         tokenbox.get("token"),
       );
       print("allInstractors $allInstractors");
@@ -611,7 +612,7 @@ class Control extends ChangeNotifier {
     setLoading(true);
     try {
       allCourses = await api.getapi2(
-        "https://cors-anywhere.herokuapp.com/$baseUrl/api/courses",
+        "$baseUrl/api/courses",
         tokenbox.get("token"),
       );
       print("allCourses $allCourses");
@@ -641,7 +642,7 @@ class Control extends ChangeNotifier {
     setLoading(true);
     try {
       myCourses = await api.getapi2(
-        "https://cors-anywhere.herokuapp.com/$baseUrl/api/my-courses",
+        "$baseUrl/api/my-courses",
         tokenbox.get("token"),
       );
       print("myCourses $myCourses");
@@ -684,7 +685,7 @@ class Control extends ChangeNotifier {
 
     try {
       reqeustBook = await api.postapi2(
-        'https://cors-anywhere.herokuapp.com/$baseUrl/api/request-books',
+        '$baseUrl/api/request-books',
         body,
         tokenbox.get("token"),
       );
@@ -715,7 +716,7 @@ class Control extends ChangeNotifier {
     setLoading(true);
     try {
       allSections = await api.getapi2(
-        "https://cors-anywhere.herokuapp.com/$baseUrl/api/sections",
+        "$baseUrl/api/sections",
         tokenbox.get("token"),
       );
       print('allsections is $allSections');
@@ -745,7 +746,7 @@ class Control extends ChangeNotifier {
     setLoading(true);
     try {
       allFavorite = await api.getapi2(
-        "https://cors-anywhere.herokuapp.com/$baseUrl/api/favorites",
+        "$baseUrl/api/favorites",
         tokenbox.get("token"),
       );
       print('allFavorite is $allFavorite');
@@ -778,7 +779,7 @@ class Control extends ChangeNotifier {
 
     try {
       addFavorite = await api.postapi2(
-        'https://cors-anywhere.herokuapp.com/$baseUrl/api/favorites',
+        '$baseUrl/api/favorites',
         body,
         tokenbox.get("token"),
       );
@@ -809,7 +810,7 @@ class Control extends ChangeNotifier {
     setLoading(true);
     try {
       allNotification = await api.getapi2(
-        "https://cors-anywhere.herokuapp.com/$baseUrl/api/notifications",
+        "$baseUrl/api/notifications",
         tokenbox.get("token"),
       );
       print('allNotification is $allNotification');
@@ -840,7 +841,7 @@ class Control extends ChangeNotifier {
     Object body = {'read': 'true'};
     try {
       readNotifications = await api.putapi(
-        "https://cors-anywhere.herokuapp.com/$baseUrl/api/notifications/$id",
+        "$baseUrl/api/notifications/$id",
         body,
         tokenbox.get("token"),
       );
@@ -874,7 +875,7 @@ class Control extends ChangeNotifier {
 
     try {
       addComplain = await api.postapi2(
-        'https://cors-anywhere.herokuapp.com/$baseUrl/api/complains',
+        '$baseUrl/api/complains',
         body,
         tokenbox.get("token"),
       );

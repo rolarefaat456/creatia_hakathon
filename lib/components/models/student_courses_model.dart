@@ -12,10 +12,10 @@ class StudentCoursesModel {
 
 class CoursesData {
   Courses (BuildContext context){
-    List course = [
-    {'name' : S.of(context).current_courses},
-    {'name' : S.of(context).completed_courses},
-    {'name' : S.of(context).all_courses},
-  ];
+    return [
+      {'name': S.of(context).current_courses},
+      {'name': S.of(context).completed_courses},
+      {'name': S.of(context).all_courses},
+    ];
   }
 }

@@ -1,9 +1,19 @@
 // ignore_for_file: prefer_single_quotes
 
 
-String getImageUrl(String originalUrl) {
-  return 'https://cors-anywhere.herokuapp.com/$originalUrl';
+// String getImageUrl(String originalUrl) {
+//   return 'https://cors-anywhere.herokuapp.com/$originalUrl';
+// }
+
+String getFullImageUrl(String imagePath) {
+  const String baseUrl = 'https://lightcoral-giraffe-475787.hostingersite.com/Creativa/public/';
+  if (imagePath.startsWith('http')) {
+    return imagePath;
+  } else {
+    return baseUrl + imagePath;
+  }
 }
+
 
 
 class Assets {

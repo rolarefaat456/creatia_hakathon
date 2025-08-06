@@ -38,6 +38,7 @@
   "confirm_new_password": "تأكيد كلمة المرور الجديدة",
   "save_password": "حفظ كلمة المرور",
   "edit_success": "تم التعديل بنجاح",
+  "Book_success" : "تم التسجيل بنجاح",
   "edit_failed": "فشل",
   "ok": "موافق",
   "basic_info": "البيانات الأساسية",
