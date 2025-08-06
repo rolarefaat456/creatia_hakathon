@@ -108,8 +108,7 @@ class _ViewPageState extends State<ViewPage> {
               value.profile != null && value.profile['data'] != null
                   ? ProfilePage(
                       image:
-                          "${value.baseUrl}/${value.profile['data']['image']}" ??
-                          Assets.imagesElprofile,
+                          "${value.baseUrl}/${value.profile['data']['image']}",
                       name: value.profile['data']['name'],
                       emailorphone: value.profile['data']['email'],
                     )

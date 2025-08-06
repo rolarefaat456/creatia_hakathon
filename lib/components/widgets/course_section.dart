@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hacathon_app/components/widgets/api_dialog.dart';
 import 'package:hacathon_app/components/widgets/button_courses_section.dart';
-import 'package:hacathon_app/generated/l10n.dart';
 import 'package:hacathon_app/providers/control.dart';
 import 'package:hacathon_app/views/widgets/Student_Progress/courses_content_view.dart';
 import 'package:hacathon_app/components/models/button_courses_model.dart';
@@ -93,7 +92,7 @@ class CourseSection extends StatelessWidget {
                             } else {
                               return CoursesContentView(
                                 image:
-                                    '${value.baseUrl}/${value.myCourses['data'][index]['course']['myinstractor']['image']}',
+                                    '${value.baseUrl}/${value.allInstractors['data'][index]['image']}',
                                 name:
                                     value.allInstractors['data'][index]['name'],
                                 phone: value
@@ -132,7 +131,7 @@ class CourseSection extends StatelessWidget {
                                         )
                                       : source == 'Favorite'
                                       ? Image.network(
-                                            '${value.baseUrl}/${value.allFavorite['data'][index]['myinstractor']['image']}',
+                                            '${value.baseUrl}/${value.allFavorite['data'][index]['image']}',
                                           )
                                       : Image.network(
                                           // getImageUrl(
